@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>La Bella Vita - Restaurante Italiano</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        :root {
+            --vino: #7b2222;
+            --verde-oliva: #556b2f;
+            --dorado: #c9b037;
+            --beige: #f5f5dc;
+            --oscuro: #222;
+        }
+        body {
+            background: var(--beige);
+            color: #222;
+        }
+        .navbar {
+            background: var(--vino);
+        }
+        .navbar-brand, .nav-link, .navbar-nav .nav-link.active {
+            color: #fff !important;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .navbar-brand span {
+            color: var(--dorado);
+        }
+        .hero {
+            background: linear-gradient(rgba(123,34,34,0.6), rgba(85,107,47,0.5)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            animation: fadeIn 1.5s;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px #000;
+            margin-bottom: 1rem;
+        }
+        .hero .btn {
+            background: var(--dorado);
+            color: var(--vino);
+            font-weight: bold;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+        }
+        .hero .btn:hover {
+            background: var(--verde-oliva);
+            color: #fff;
+            transform: scale(1.05);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .section-title {
+            color: var(--vino);
+            font-weight: bold;
+            margin-bottom: 2rem;
+            letter-spacing: 2px;
+        }
+        .card {
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(123,34,34,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(123,34,34,0.18);
+        }
+        .card-img-top {
+            border-radius: 18px 18px 0 0;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card-title {
+            color: var(--verde-oliva);
+            font-weight: bold;
+        }
+        .card .btn {
+            background: var(--vino);
+            color: #fff;
+            border-radius: 20px;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .card .btn:hover {
+            background: var(--dorado);
+            color: var(--vino);
+            transform: scale(1.05);
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--dorado);
+            box-shadow: 0 0 0 0.2rem rgba(201,176,55,0.25);
+        }
+        .about-img {
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(85,107,47,0.12);
+            max-width: 100%;
+            height: auto;
+        }
+        .footer {
+            background: var(--oscuro);
+            color: #fff;
+            padding: 2rem 0 1rem 0;
+        }
+        .footer a {
+            color: var(--dorado);
+            text-decoration: none;
+            margin-right: 1rem;
+            transition: color 0.2s;
+        }
+        .footer a:hover {
+            color: var(--verde-oliva);
+        }
+        .footer .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            color: var(--dorado);
+            transition: color 0.2s;
+        }
+        .footer .social-icons a:hover {
+            color: var(--verde-oliva);
+        }
+        @media (max-width: 767px) {
+            .hero h1 { font-size: 2rem; }
+            .card-img-top { height: 120px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#"><span>La Bella Vita</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menú</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reservaciones">Reservaciones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre-nosotros">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+        <h1>Auténtica cocina italiana en el corazón de la ciudad</h1>
+        <a href="#reservaciones" class="btn mt-3 shadow">Reservar mesa</a>
+    </section>
+
+    <!-- Menú -->
+    <section class="container py-5" id="menu">
+        <h2 class="section-title text-center">Nuestro Menú</h2>
+        <div class="row g-4">
+            <!-- Plato 1 -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Pasta Carbonara">
+                    <div class="card-body">
+                        <h5 class="card-title">Pasta Carbonara</h5>
+                        <p class="card-text">Espaguetis con salsa cremosa de huevo, panceta y queso parmesano.</p>
+                        <p class="fw-bold text-success mb-2">€12.00</p>
+                        <a href="#" class="btn">Ordenar ahora</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plato 2 -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Pizza Margherita">
+                    <div class="card-body">
+                        <h5 class="card-title">Pizza Margherita</h5>
+                        <p class="card-text">Clásica pizza con salsa de tomate, mozzarella fresca y albahaca.</p>
+                        <p class="fw-bold text-success mb-2">€10.00</p>
+                        <a href="#" class="btn">Ordenar ahora</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plato 3 -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1523987355523-c7b5b0723c6a?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Lasaña Boloñesa">
+                    <div class="card-body">
+                        <h5 class="card-title">Lasaña Boloñesa</h5>
+                        <p class="card-text">Capas de pasta, carne, salsa de tomate y bechamel gratinada.</p>
+                        <p class="fw-bold text-success mb-2">€13.50</p>
+                        <a href="#" class="btn">Ordenar ahora</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plato 4 -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Risotto de Setas">
+                    <div class="card-body">
+                        <h5 class="card-title">Risotto de Setas</h5>
+                        <p class="card-text">Arroz cremoso con setas frescas, parmesano y un toque de vino blanco.</p>
+                        <p class="fw-bold text-success mb-2">€14.00</p>
+                        <a href="#" class="btn">Ordenar ahora</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plato 5 -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Ensalada Caprese">
+                    <div class="card-body">
+                        <h5 class="card-title">Ensalada Caprese</h5>
+                        <p class="card-text">Mozzarella, tomate fresco, albahaca, aceite de oliva y balsámico.</p>
+                        <p class="fw-bold text-success mb-2">€8.50</p>
+                        <a href="#" class="btn">Ordenar ahora</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Plato 6 -->
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Tiramisú">
+                    <div class="card-body">
+                        <h5 class="card-title">Tiramisú</h5>
+                        <p class="card-text">Postre tradicional con capas de bizcocho, café, mascarpone y cacao.</p>
+                        <p class="fw-bold text-success mb-2">€6.00</p>
+                        <a href="#" class="btn">Ordenar ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservaciones -->
+    <section class="container py-5" id="reservaciones">
+        <h2 class="section-title text-center">Reservaciones</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <form class="bg-white p-4 rounded shadow">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" id="nombre" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="email" class="form-control" id="correo" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="personas" class="form-label">Nº de personas</label>
+                            <input type="number" class="form-control" id="personas" min="1" max="20" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="fecha" class="form-label">Fecha</label>
+                            <input type="date" class="form-control" id="fecha" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="hora" class="form-label">Hora</label>
+                            <input type="time" class="form-control" id="hora" required>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button type="submit" class="btn" style="background:var(--verde-oliva);color:#fff;">Enviar Reservación</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre Nosotros -->
+    <section class="container py-5" id="sobre-nosotros">
+        <h2 class="section-title text-center">Sobre Nosotros</h2>
+        <div class="row align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <p style="font-size:1.15rem;">
+                    Fundado en 1998, <b>La Bella Vita</b> es un rincón de Italia en la ciudad. Nuestra pasión es ofrecer recetas tradicionales con ingredientes frescos y un ambiente elegante y acogedor. Cada plato cuenta una historia, y cada visita es una experiencia inolvidable.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Restaurante elegante" class="about-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="container py-5" id="contacto">
+        <h2 class="section-title text-center">Contacto</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <form class="bg-white p-4 rounded shadow">
+                    <div class="mb-3">
+                        <label for="contacto-nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="contacto-nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contacto-email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="contacto-email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contacto-mensaje" class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="contacto-mensaje" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="background:var(--vino);color:#fff;">Enviar Mensaje</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <h5 class="mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Dirección</h5>
+                    <p>Calle Italia 123, Centro, Ciudad</p>
+                    <h5 class="mb-1"><i class="bi bi-telephone-fill me-2"></i>Teléfono</h5>
+                    <p>+34 123 456 789</p>
+                </div>
+                <div class="ratio ratio-16x9 rounded shadow">
+                    <iframe src="https://www.google.com/maps?q=roma,italia&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border-radius:12px;"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <h5>La Bella Vita</h5>
+                    <p>Auténtica cocina italiana desde 1998.</p>
+                </div>
+                <div class="col-md-2">
+                    <h6>Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#menu">Menú</a></li>
+                        <li><a href="#reservaciones">Reservaciones</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Horarios</h6>
+                    <ul class="list-unstyled">
+                        <li>Lun-Dom: 12:00 - 23:00</li>
+                        <li>Festivos: 13:00 - 22:00</li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6>Síguenos</h6>
+                    <div class="social-icons">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr style="border-color:rgba(255,255,255,0.1);">
+            <div class="text-center small mt-2">
+                &copy; 2024 La Bella Vita. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html></div>
