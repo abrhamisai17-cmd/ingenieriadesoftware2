@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sobre Nosotros - Airam Zul</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre la esencia de Airam Zul: una joyería de plata que une arte, lujo y compromiso con la sostenibilidad. Nuestra historia, filosofía y visión única.">
+    <meta name="keywords" content="Airam Zul, sobre nosotros, historia joyería, plata artesanal, lujo, sostenibilidad">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --blanco: #ffffff;
+            --gris-metal: #92a3ad;
+            --beige: #ded7c7;
+            --dorado-rosado: #c59787;
+            --negro: #181818;
+            --transp-negro: rgba(24,24,24,0.6);
+            --playfair: 'Playfair Display', serif;
+            --roboto: 'Roboto', sans-serif;
+            --white: #ffffff;
+            --metallic-gray: #92a3ad;
+            --beige: #ded7c7;
+            --rose-gold: #c59787;
+            --dark-gray: #23272b;
+            --light-metallic: #f4f7fa;
+        }
+        html {
+            scroll-behavior: smooth;
+            background: var(--blanco);
+        }
+        body {
+            font-family: var(--roboto);
+            color: var(--negro);
+            background: var(--blanco);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4 {
+            font-family: var(--playfair);
+            color: var(--dorado-rosado);
+            letter-spacing: 1px;
+        }
+/* Navbar */
+.navbar {
+    background: var(--white) !important;
+    box-shadow: 0 2px 12px rgba(146,163,173,0.08) !important;
+    font-family: 'Roboto', Arial, sans-serif !important;
+    transition: box-shadow 0.3s !important;
+}
+
+.navbar-brand {
+    font-family: 'Playfair Display', serif !important;
+    font-size: 2rem !important;
+    color: var(--rose-gold) !important;
+    letter-spacing: 2px !important;
+    font-weight: 700 !important;
+}
+
+.nav-link {
+    color: var(--metallic-gray) !important;
+    font-weight: 500 !important;
+    margin-right: 1rem !important;
+    transition: color 0.2s !important;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--rose-gold) !important;
+}
+
+.navbar-social a {
+    color: var(--metallic-gray) !important;
+    margin-left: 0.7rem !important;
+    font-size: 1.2rem !important;
+    transition: color 0.2s !important;
+}
+
+.navbar-social a:hover {
+    color: var(--rose-gold) !important;
+}
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            background: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, rgba(24,24,24,0.7) 60%, rgba(146,163,173,0.3) 100%);
+            z-index: 1;
+        }
+        .hero .shine {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 60% 40%, rgba(255,255,255,0.18) 0%, transparent 70%);
+            animation: shineMove 5s infinite alternate;
+            z-index: 2;
+        }
+        @keyframes shineMove {
+            0% { background-position: 60% 40%; }
+            100% { background-position: 80% 60%; }
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: var(--blanco);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .hero-content h1 {
+            font-size: 2.7rem;
+            font-family: var(--playfair);
+            font-weight: 900;
+            color: var(--blanco);
+            text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+            margin-bottom: 0.5em;
+            letter-spacing: 2px;
+        }
+        /* Timeline */
+        .timeline-section {
+            background: var(--blanco);
+            padding: 4rem 0 3rem 0;
+            position: relative;
+            overflow-x: auto;
+        }
+        .timeline {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            margin: 0 auto;
+            max-width: 1100px;
+            padding: 2rem 1rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 8%;
+            right: 8%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gris-metal), var(--dorado-rosado));
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            z-index: 1;
+            width: 180px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(.4,1.4,.6,1);
+        }
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-dot {
+            width: 32px;
+            height: 32px;
+            background: var(--blanco);
+            border: 4px solid var(--dorado-rosado);
+            border-radius: 50%;
+            margin: 0 auto 1rem auto;
+            box-shadow: 0 0 0 0 var(--dorado-rosado);
+            transition: box-shadow 0.4s;
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timeline-dot.active {
+            box-shadow: 0 0 16px 4px var(--dorado-rosado);
+            background: var(--dorado-rosado);
+        }
+        .timeline-year {
+            font-family: var(--playfair);
+            font-size: 1.2rem;
+            color: var(--gris-metal);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .timeline-img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 0.7rem;
+            box-shadow: 0 4px 16px rgba(146,163,173,0.15);
+        }
+        .timeline-text {
+            font-size: 1rem;
+            color: var(--negro);
+            font-family: var(--roboto);
+        }
+        /* Filosofía Sensorial */
+        .filosofia-section {
+            background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            background-blend-mode: luminosity;
+            padding: 4rem 0;
+            position: relative;
+        }
+        .filosofia-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.82);
+            z-index: 1;
+        }
+        .filosofia-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            align-items: stretch;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .filosofia-block {
+            background: var(--blanco);
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(146,163,173,0.13);
+            overflow: hidden;
+            width: 320px;
+            min-height: 380px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        .filosofia-block:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 8px 32px 0 var(--dorado-rosado);
+        }
+        .filosofia-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            filter: grayscale(0.2);
+            transition: filter 0.3s;
+        }
+        .filosofia-block:hover .filosofia-img {
+            filter: grayscale(0) brightness(1.08);
+        }
+        .filosofia-title {
+            font-family: var(--playfair);
+            font-size: 1.3rem;
+            color: var(--dorado-rosado);
+            margin: 1.2rem 0 0.7rem 0;
+            font-weight: 700;
+        }
+        .filosofia-hover {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            background: rgba(146,163,173,0.93);
+            color: var(--blanco);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-family: var(--roboto);
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 18px;
+            transition: opacity 0.4s;
+        }
+        .filosofia-block:hover .filosofia-hover {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* El Taller - Galería */
+        .taller-section {
+            background: var(--blanco);
+            padding: 4rem 0 3rem 0;
+        }
+        .taller-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .taller-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .taller-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 12px rgba(146,163,173,0.13);
+        }
+        .taller-img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 32px 0 var(--dorado-rosado);
+        }
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(24,24,24,0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.4s;
+        }
+        .lightbox.active {
+            display: flex;
+        }
+        .lightbox-img {
+            max-width: 90vw;
+            max-height: 80vh;
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 var(--dorado-rosado);
+            border: 4px solid var(--dorado-rosado);
+            background: var(--blanco);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2.2rem;
+            color: var(--blanco);
+            cursor: pointer;
+            z-index: 1001;
+            background: none;
+            border: none;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* Sostenibilidad */
+        .sostenibilidad-section {
+            background: var(--beige);
+            padding: 4rem 0 3rem 0;
+            text-align: center;
+        }
+        .sostenibilidad-icons {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        .sostenibilidad-block {
+            background: var(--blanco);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            min-width: 220px;
+            max-width: 260px;
+            box-shadow: 0 2px 12px rgba(146,163,173,0.10);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .sostenibilidad-block:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px 0 var(--gris-metal);
+        }
+        .sostenibilidad-icon {
+            font-size: 2.5rem;
+            color: var(--dorado-rosado);
+            margin-bottom: 1rem;
+        }
+        .sostenibilidad-title {
+            font-family: var(--playfair);
+            font-size: 1.1rem;
+            color: var(--gris-metal);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        /* Experiencia Airam Zul */
+        .experiencia-section {
+            background: var(--blanco);
+            padding: 4rem 0 3rem 0;
+        }
+        .experiencia-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .experiencia-blocks {
+            display: flex;
+            gap: 2.5rem;
+            justify-content: center;
+            align-items: stretch;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .experiencia-block {
+            background: var(--gris-metal);
+            border-radius: 18px;
+            overflow: hidden;
+            width: 320px;
+            min-height: 340px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            box-shadow: 0 2px 12px rgba(146,163,173,0.13);
+        }
+        .experiencia-block:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 8px 32px 0 var(--dorado-rosado);
+        }
+        .experiencia-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            filter: grayscale(0.1);
+            transition: filter 0.3s;
+        }
+        .experiencia-block:hover .experiencia-img {
+            filter: grayscale(0) brightness(1.08);
+        }
+        .experiencia-label {
+            font-family: var(--playfair);
+            font-size: 1.2rem;
+            color: var(--blanco);
+            margin: 1.2rem 0 1rem 0;
+            font-weight: 700;
+            text-shadow: 0 2px 8px rgba(24,24,24,0.18);
+            transition: color 0.3s;
+        }
+        .experiencia-block:hover .experiencia-label {
+            color: var(--dorado-rosado);
+        }
+        /* Cita Inspiradora */
+        .cita-section {
+            position: relative;
+            min-height: 60vh;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cita-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(24,24,24,0.65);
+            z-index: 1;
+        }
+        .cita-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--blanco);
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .cita-content h2 {
+            font-size: 2.1rem;
+            font-family: var(--playfair);
+            font-weight: 900;
+            color: var(--blanco);
+            text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+            margin-bottom: 0.5em;
+            letter-spacing: 2px;
+        }
+         /* CTA Final */
+        .cta-section {
+            background: linear-gradient(rgba(35,39,43,0.55), rgba(35,39,43,0.55)), url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            padding: 5rem 0 5rem 0;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+        .cta-title {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .cta-btn {
+            background: var(--rose-gold);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(197,151,135,0.13);
+        }
+        .cta-btn:hover {
+            background: #b07d6a;
+            transform: scale(1.05);
+        }
+        /* Footer */
+        .footer {
+            background: #23272b;
+            color: var(--white);
+            padding: 3rem 0 1.2rem 0;
+            font-size: 1rem;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--rose-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.7rem;
+            display: inline-block;
+        }
+        .footer-desc {
+            color: #bfc7ce;
+            font-size: 0.98rem;
+            margin-bottom: 1.2rem;
+        }
+        .footer-links a {
+            color: #bfc7ce;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: var(--rose-gold);
+        }
+        .footer-social a {
+            color: #bfc7ce;
+            font-size: 1.3rem;
+            margin-right: 1.1rem;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: var(--rose-gold);
+        }
+        .footer-bottom {
+            border-top: 1px solid #3a4046;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #bfc7ce;
+            font-size: 0.95rem;
+        }
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .timeline, .filosofia-content, .experiencia-blocks {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+            .timeline {
+                max-width: 98vw;
+            }
+        }
+        @media (max-width: 700px) {
+            .hero-content h1, .cita-content h2, .cta-section h3 {
+                font-size: 1.3rem;
+            }
+            .filosofia-block, .experiencia-block {
+                width: 98vw;
+                min-width: unset;
+            }
+            .timeline-item {
+                width: 90vw;
+            }
+            .taller-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        .fixed-top {
+    position: relative !important;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+    </style>
+</head>
+<body>
+        <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">Airam Zul</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="./index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Colección.html">Colección</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Nosotros.html">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <div class="navbar-social ms-lg-3 mt-3 mt-lg-0">
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="shine"></div>
+        <div class="hero-content">
+            <h1>Nuestra esencia no es solo plata, es arte que cuenta historias.</h1>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline-section" id="timeline">
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2012</div>
+                <img class="timeline-img" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Primer taller">
+                <div class="timeline-text">Nace Airam Zul en un pequeño taller, donde la pasión por la plata y el arte se fusionan.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2015</div>
+                <img class="timeline-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Primera colección">
+                <div class="timeline-text">Lanzamos nuestra primera colección: piezas que celebran la belleza de lo artesanal.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2018</div>
+                <img class="timeline-img" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Expansión">
+                <div class="timeline-text">Expansión internacional: Airam Zul llega a boutiques de lujo en Europa y América.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-year">2022</div>
+                <img class="timeline-img" src="./img/proceso.jpeg" alt="Sostenibilidad">
+                <div class="timeline-text">Compromiso total con la sostenibilidad y la innovación en cada creación.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filosofía Sensorial -->
+    <section class="filosofia-section">
+        <div class="filosofia-overlay"></div>
+        <div class="filosofia-content">
+            <div class="filosofia-block">
+                <img class="filosofia-img" src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&w=400&q=80" alt="Arte del Detalle">
+                <div class="filosofia-title">El Arte del Detalle</div>
+                <div class="filosofia-hover">Cada curva y textura esculpida a mano revela la dedicación y el alma de nuestros artesanos.</div>
+            </div>
+            <div class="filosofia-block">
+                <img class="filosofia-img" src="./img/proceso.jpeg" alt="Pureza de la Plata">
+                <div class="filosofia-title">La Pureza de la Plata</div>
+                <div class="filosofia-hover">Trabajamos solo con plata de la más alta pureza, reflejando luz y emociones en cada pieza.</div>
+            </div>
+            <div class="filosofia-block">
+                <img class="filosofia-img" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Diseños que Hablan">
+                <div class="filosofia-title">Diseños que Hablan</div>
+                <div class="filosofia-hover">Nuestras joyas cuentan historias únicas, pensadas para acompañar momentos inolvidables.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- El Taller -->
+    <section class="taller-section" id="taller">
+        <h2 class="taller-title">El Taller: Detrás de Escena</h2>
+        <div class="taller-gallery">
+            <img class="taller-img" src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Diseño artesanal" data-full="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80">
+            <img class="taller-img" src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Fundición" data-full="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=1200&q=80">
+            <img class="taller-img" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Pulido" data-full="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80">
+            <img class="taller-img" src="./img/proceso.jpeg" alt="Acabado" data-full="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=1200&q=80">
+        </div>
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="Imagen ampliada">
+        </div>
+    </section>
+
+    <!-- Sostenibilidad -->
+    <section class="sostenibilidad-section">
+        <h2>Compromiso con la Sostenibilidad</h2>
+        <div class="sostenibilidad-icons">
+            <div class="sostenibilidad-block">
+                <div class="sostenibilidad-icon"><i class="bi bi-recycle"></i></div>
+                <div class="sostenibilidad-title">Plata reciclada</div>
+                <div class="sostenibilidad-text">Utilizamos plata reciclada para reducir el impacto ambiental y preservar recursos.</div>
+            </div>
+            <div class="sostenibilidad-block">
+                <div class="sostenibilidad-icon"><i class="bi bi-box-seam"></i></div>
+                <div class="sostenibilidad-title">Empaques sustentables</div>
+                <div class="sostenibilidad-text">Nuestros empaques son ecológicos, elegantes y reutilizables.</div>
+            </div>
+            <div class="sostenibilidad-block">
+                <div class="sostenibilidad-icon"><i class="bi bi-people"></i></div>
+                <div class="sostenibilidad-title">Artesanos locales</div>
+                <div class="sostenibilidad-text">Colaboramos con artesanos locales, impulsando el talento y la economía regional.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencia Airam Zul -->
+    <section class="experiencia-section">
+        <h2 class="experiencia-title">La Experiencia Airam Zul</h2>
+        <div class="experiencia-blocks">
+            <div class="experiencia-block">
+                <img class="experiencia-img" src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Comprar Online">
+                <div class="experiencia-label">Comprar Online</div>
+            </div>
+            <div class="experiencia-block">
+                <img class="experiencia-img" src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=400&q=80" alt="Boutique Privada">
+                <div class="experiencia-label">Boutique Privada</div>
+            </div>
+            <div class="experiencia-block">
+                <img class="experiencia-img" src="./img/proceso.jpeg" alt="Joyería Personalizada">
+                <div class="experiencia-label">Joyería Personalizada</div>
+            </div>
+        </div>
+    </section>
+
+
+
+        <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2 class="cta-title">Descubre la colección completa de Airam Zul y brilla con elegancia</h2>
+            <a href="./Colección.html" class="cta-btn">Explorar Colección</a>
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="footer mt-0">
+        <div class="container">
+            <div class="row text-md-start text-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <span class="footer-logo">Airam Zul</span>
+                    <div class="footer-desc">Joyería de plata con diseños exclusivos, modernos y elegantes. Cada pieza es una obra de arte para tus momentos más especiales.</div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0 footer-links">
+                    <div class="mb-2 fw-bold" style="color:var(--rose-gold);">Links rápidos</div>
+                    <a href="./index.html">Inicio</a>
+                    <a href="./Colección.html">Colección</a>
+                    <a href="./Nosotros.html">Sobre Nosotros</a>
+                    <a href="./contacto.html">Contacto</a>
+                </div>
+                <div class="col-md-4 footer-social">
+                    <div class="mb-2 fw-bold" style="color:var(--rose-gold);">Síguenos</div>
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom mt-4">
+                © 2025 Airam Zul. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Volver Arriba -->
+    <button id="btn-top" aria-label="Volver arriba"><i class="bi bi-arrow-up"></i></button>
+
+    <script>
+        // Animaciones al hacer scroll (fade, slide, zoom)
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.timeline-item, .filosofia-block, .taller-img, .sostenibilidad-block, .experiencia-block');
+            const triggerBottom = window.innerHeight * 0.88;
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < triggerBottom) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('DOMContentLoaded', animateOnScroll);
+
+        // Timeline interactivo: puntos se iluminan al hacer scroll
+        function activateTimelineDots() {
+            const items = document.querySelectorAll('.timeline-item');
+            const triggerBottom = window.innerHeight * 0.7;
+            items.forEach((item, idx) => {
+                const rect = item.getBoundingClientRect();
+                const dot = item.querySelector('.timeline-dot');
+                if (rect.top < triggerBottom) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', activateTimelineDots);
+        window.addEventListener('DOMContentLoaded', activateTimelineDots);
+
+        // Galería con efecto lightbox
+        const galleryImgs = document.querySelectorAll('.taller-img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxClose = document.getElementById('lightbox-close');
+        galleryImgs.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.getAttribute('data-full') || img.src;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+            lightboxImg.src = '';
+            document.body.style.overflow = '';
+        });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+                document.body.style.overflow = '';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                lightbox.classList.remove('active');
+                lightboxImg.src = '';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Botón volver arriba
+        const btnTop = document.getElementById('btn-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                btnTop.style.display = 'block';
+            } else {
+                btnTop.style.display = 'none';
+            }
+        });
+        btnTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Experiencia Airam Zul: animación hover (ya en CSS)
+        // Filosofía: hover (ya en CSS)
+    </script>
+</body>
+</html></div>

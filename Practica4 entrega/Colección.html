@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Colección - Airam Zul</title>
+    <meta name="description" content="Explora la colección de joyería de plata Airam Zul: anillos, collares, aretes y pulseras diseñados con elegancia y lujo.">
+    <meta name="keywords" content="colección de joyas, joyería de plata, Airam Zul, anillos, collares, aretes, pulseras, lujo">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+                :root {
+            --blanco: #ffffff;
+            --gris-metal: #92a3ad;
+            --beige: #ded7c7;
+            --dorado-rosado: #c59787;
+            --negro: #181818;
+            --transp-negro: rgba(24,24,24,0.6);
+            --playfair: 'Playfair Display', serif;
+            --roboto: 'Roboto', sans-serif;
+            --white: #ffffff;
+            --metallic-gray: #92a3ad;
+            --beige: #ded7c7;
+            --rose-gold: #c59787;
+            --dark-gray: #23272b;
+            --light-metallic: #f4f7fa;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--white);
+            color: #222;
+            scroll-behavior: smooth;
+        }
+         /* Navbar */
+        .navbar {
+            background: var(--white) !important;
+            box-shadow: 0 2px 12px rgba(146,163,173,0.08);
+            font-family: 'Roboto', Arial, sans-serif;
+            transition: box-shadow 0.3s;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--rose-gold) !important;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        .nav-link {
+            color: var(--metallic-gray) !important;
+            font-weight: 500;
+            margin-right: 1rem;
+            transition: color 0.2s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--rose-gold) !important;
+        }
+        .navbar-social a {
+            color: var(--metallic-gray);
+            margin-left: 0.7rem;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .navbar-social a:hover {
+            color: var(--rose-gold);
+        }
+        /* Hero */
+        .hero-section {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(34, 34, 34, 0.55);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+        .hero-content p {
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        /* Filtros */
+        .filters-bar {
+            background: var(--white);
+            box-shadow: 0 2px 12px 0 rgba(146,163,173,0.07);
+            padding: 1.2rem 0 1rem 0;
+            margin-bottom: 2rem;
+            position: sticky;
+            top: 70px;
+            z-index: 10;
+        }
+        .filters-bar .btn, .filters-bar .dropdown-toggle {
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            color: var(--metallic-gray);
+            border: 1px solid var(--metallic-gray);
+            background: var(--white);
+            transition: background 0.2s, color 0.2s, border 0.2s;
+        }
+        .filters-bar .btn.active, .filters-bar .btn:hover, .filters-bar .dropdown-toggle:focus {
+            background: var(--rose-gold);
+            color: var(--white);
+            border-color: var(--rose-gold);
+        }
+        /* Catálogo */
+        .catalog-section {
+            padding: 2rem 0 3rem 0;
+        }
+        .product-card {
+            border: none;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: box-shadow 0.3s, transform 0.3s;
+            background: var(--white);
+            margin-bottom: 2rem;
+        }
+        .product-card:hover {
+            box-shadow: 0 12px 32px 0 rgba(197,151,135,0.18);
+            transform: translateY(-6px) scale(1.025);
+        }
+        .product-img-container {
+            overflow: hidden;
+            height: 270px;
+            background: #f7f7f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+        }
+        .product-card:hover img {
+            transform: scale(1.08);
+        }
+        .product-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--rose-gold);
+            margin-bottom: 0.3rem;
+            margin-top: 1rem;
+        }
+        .product-price {
+            color: var(--metallic-gray);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .btn-cart {
+            background: var(--rose-gold);
+            color: var(--white);
+            border-radius: 2rem;
+            font-weight: 500;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            transition: background 0.2s;
+        }
+        .btn-cart:hover {
+            background: var(--metallic-gray);
+            color: var(--white);
+        }
+        /* Destacados */
+        .featured-section {
+            background: var(--beige);
+            padding: 3rem 0 2rem 0;
+        }
+        .featured-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--rose-gold);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+        }
+        .carousel-item {
+            text-align: center;
+        }
+        .featured-img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 1.2rem;
+            margin: 0 auto 1.2rem auto;
+            box-shadow: 0 4px 24px 0 rgba(146,163,173,0.13);
+        }
+        .featured-name {
+            font-family: 'Playfair Display', serif;
+            color: var(--rose-gold);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        .featured-price {
+            color: var(--metallic-gray);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .btn-featured {
+            background: var(--rose-gold);
+            color: var(--white);
+            border-radius: 2rem;
+            font-weight: 500;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            transition: background 0.2s;
+        }
+        .btn-featured:hover {
+            background: var(--metallic-gray);
+            color: var(--white);
+        }
+        /* Inspiración */
+        .inspiration-section {
+            background: var(--beige);
+            padding: 3rem 0 3rem 0;
+        }
+        .inspiration-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 991px) {
+            .inspiration-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .inspiration-item {
+            position: relative;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            min-height: 320px;
+            box-shadow: 0 4px 24px 0 rgba(146,163,173,0.13);
+        }
+        .inspiration-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(.4,2,.6,1);
+        }
+        .inspiration-item:hover img {
+            transform: scale(1.06);
+        }
+        .inspiration-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(197,151,135,0.22);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+        .inspiration-text {
+            font-family: 'Playfair Display', serif;
+            color: var(--white);
+            font-size: 1.5rem;
+            text-shadow: 0 2px 8px rgba(34,34,34,0.18);
+            letter-spacing: 1px;
+        }
+        /* CTA */
+        .cta-section {
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            min-height: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(34,34,34,0.55);
+            z-index: 1;
+        }
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 1rem;
+            width: 100%;
+        }
+        .cta-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: 1px;
+        }
+        .btn-cta {
+            background: var(--rose-gold);
+            color: var(--white);
+            border-radius: 2rem;
+            font-weight: 500;
+            border: none;
+            padding: 0.8rem 2.5rem;
+            font-size: 1.2rem;
+            transition: background 0.2s;
+            margin-top: 1rem;
+        }
+        .btn-cta:hover {
+            background: var(--metallic-gray);
+            color: var(--white);
+        }
+         /* Footer */
+        .footer {
+            background: #23272b;
+            color: var(--white);
+            padding: 3rem 0 1.2rem 0;
+            font-size: 1rem;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--rose-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.7rem;
+            display: inline-block;
+        }
+        .footer-desc {
+            color: #bfc7ce;
+            font-size: 0.98rem;
+            margin-bottom: 1.2rem;
+        }
+        .footer-links a {
+            color: #bfc7ce;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: var(--rose-gold);
+        }
+        .footer-social a {
+            color: #bfc7ce;
+            font-size: 1.3rem;
+            margin-right: 1.1rem;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: var(--rose-gold);
+        }
+        .footer-bottom {
+            border-top: 1px solid #3a4046;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #bfc7ce;
+            font-size: 0.95rem;
+        }
+        /* Botón volver arriba */
+        #btn-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 99;
+            background: var(--rose-gold);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 52px;
+            height: 52px;
+            font-size: 1.7rem;
+            box-shadow: 0 4px 16px 0 rgba(197,151,135,0.18);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+        #btn-top:hover {
+            background: var(--metallic-gray);
+            color: var(--white);
+        }
+        /* Responsive */
+        @media (max-width: 991px) {
+            .product-img-container { height: 200px; }
+            .featured-img { width: 220px; height: 220px; }
+        }
+        @media (max-width: 767px) {
+            .product-img-container { height: 160px; }
+            .featured-img { width: 140px; height: 140px; }
+            .hero-content h1 { font-size: 2.1rem; }
+            .cta-content h2 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+        <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">Airam Zul</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="./index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Colección.html">Colección</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Nosotros.html">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <div class="navbar-social ms-lg-3 mt-3 mt-lg-0">
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Nuestra Colección</h1>
+            <p>Descubre piezas únicas hechas en plata de la más alta calidad.</p>
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <div class="filters-bar container-fluid">
+        <div class="container d-flex flex-wrap align-items-center">
+            <div class="me-3 mb-2">
+                <span class="me-2 fw-bold" style="color:var(--rose-gold);">Categorías:</span>
+                <button class="btn btn-sm active" data-category="Todos">Todos</button>
+                <button class="btn btn-sm" data-category="Anillos">Anillos</button>
+                <button class="btn btn-sm" data-category="Collares">Collares</button>
+                <button class="btn btn-sm" data-category="Aretes">Aretes</button>
+                <button class="btn btn-sm" data-category="Pulseras">Pulseras</button>
+            </div>
+            <div class="dropdown mb-2 ms-auto">
+                <button class="btn btn-sm dropdown-toggle" type="button" id="dropdownPrecio" data-bs-toggle="dropdown" aria-expanded="false">
+                    Ordenar por precio
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownPrecio">
+                    <li><a class="dropdown-item" href="#" data-price="asc">Menor a mayor</a></li>
+                    <li><a class="dropdown-item" href="#" data-price="desc">Mayor a menor</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Catálogo -->
+    <section class="catalog-section container">
+        <div class="row" id="catalogoProductos">
+            <!-- Productos se insertan por JS -->
+        </div>
+    </section>
+
+    <!-- Destacados -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-title">Selección Exclusiva</div>
+            <div id="carouselDestacados" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+                <div class="carousel-inner" id="carouselProductos">
+                    <!-- Slides por JS -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselDestacados" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselDestacados" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Inspiración -->
+    <section class="inspiration-section">
+        <div class="container">
+            <div class="inspiration-grid">
+                <div class="inspiration-item">
+                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=800&q=80" alt="Elegancia diaria">
+                    <div class="inspiration-overlay">
+                        <span class="inspiration-text">Elegancia diaria</span>
+                    </div>
+                </div>
+                <div class="inspiration-item">
+                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=800&q=80" alt="Detalles que enamoran">
+                    <div class="inspiration-overlay">
+                        <span class="inspiration-text">Detalles que enamoran</span>
+                    </div>
+                </div>
+                <div class="inspiration-item">
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=80" alt="Tu estilo único">
+                    <div class="inspiration-overlay">
+                        <span class="inspiration-text">Tu estilo único</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <h2>Descubre el lujo en cada detalle con Airam Zul</h2>
+            <a href="./comprar.html" class="btn btn-cta">Comprar Ahora</a>
+        </div>
+    </section>
+
+        <!-- Footer -->
+    <footer class="footer mt-0">
+        <div class="container">
+            <div class="row text-md-start text-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <span class="footer-logo">Airam Zul</span>
+                    <div class="footer-desc">Joyería de plata con diseños exclusivos, modernos y elegantes. Cada pieza es una obra de arte para tus momentos más especiales.</div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0 footer-links">
+                    <div class="mb-2 fw-bold" style="color:var(--rose-gold);">Links rápidos</div>
+                    <a href="./index.html">Inicio</a>
+                    <a href="./Colección.html">Colección</a>
+                    <a href="./Nosotros.html">Sobre Nosotros</a>
+                    <a href="./contacto.html">Contacto</a>
+                </div>
+                <div class="col-md-4 footer-social">
+                    <div class="mb-2 fw-bold" style="color:var(--rose-gold);">Síguenos</div>
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom mt-4">
+                © 2025 Airam Zul. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón volver arriba -->
+    <button id="btn-top" title="Volver arriba">&#8679;</button>
+
+    <!-- Bootstrap 5 JS + Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script>
+        // Productos de catálogo
+        const productos = [
+            {
+                nombre: "Anillo Aurora",
+                categoria: "Anillos",
+                precio: 1200,
+                imagen: "./img/anillo.png"
+            },
+            {
+                nombre: "Collar Eterno",
+                categoria: "Collares",
+                precio: 2500,
+                imagen: "./img/collar.png"
+            },
+            {
+                nombre: "Aretes Luz de Luna",
+                categoria: "Aretes",
+                precio: 950,
+                imagen: "./img/aretes.png"
+            },
+            {
+                nombre: "Pulsera Encanto",
+                categoria: "Pulseras",
+                precio: 1800,
+                imagen: "./img/pulsera.png"
+            },
+            {
+                nombre: "Anillo Brisa de Plata",
+                categoria: "Anillos",
+                precio: 1350,
+                imagen: "./img/anillo.png"
+            },
+            {
+                nombre: "Collar Destello",
+                categoria: "Collares",
+                precio: 2100,
+                imagen: "./img/collar.png"
+            },
+            {
+                nombre: "Aretes Estrella",
+                categoria: "Aretes",
+                precio: 1100,
+                imagen: "./img/aretes.png"
+            },
+            {
+                nombre: "Pulsera Dama",
+                categoria: "Pulseras",
+                precio: 1950,
+                imagen: "./img/pulsera.png"
+            }
+        ];
+
+        // Productos destacados (premium)
+        const destacados = [
+            {
+                nombre: "Collar Realza",
+                precio: 3200,
+                imagen: "./img/collar.png"
+            },
+            {
+                nombre: "Anillo Solsticio",
+                precio: 2800,
+                imagen: "./img/anillo.png"
+            },
+            {
+                nombre: "Aretes Aurora Boreal",
+                precio: 2600,
+                imagen: "./img/aretes.png"
+            },
+            {
+                nombre: "Pulsera Sublime",
+                precio: 3500,
+                imagen: "./img/pulsera.png"
+            }
+        ];
+
+        // Render catálogo
+        function renderCatalogo(filtroCategoria = "Todos", ordenPrecio = null) {
+            let lista = [...productos];
+            if (filtroCategoria !== "Todos") {
+                lista = lista.filter(p => p.categoria === filtroCategoria);
+            }
+            if (ordenPrecio === "asc") {
+                lista.sort((a, b) => a.precio - b.precio);
+            } else if (ordenPrecio === "desc") {
+                lista.sort((a, b) => b.precio - a.precio);
+            }
+            const cont = document.getElementById('catalogoProductos');
+            cont.innerHTML = '';
+            lista.forEach(p => {
+                cont.innerHTML += `
+                    <div class="col-lg-4 col-md-6 col-12 d-flex">
+                        <div class="card product-card flex-fill">
+                            <div class="product-img-container">
+                                <img src="${p.imagen}" alt="${p.nombre}">
+                            </div>
+                            <div class="card-body d-flex flex-column align-items-center">
+                                <div class="product-title">${p.nombre}</div>
+                                <div class="product-price">$${p.precio.toLocaleString()} MXN</div>
+                                <a href="./comprar.html" class="btn btn-cart mt-auto">Comprar ahora</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Render destacados
+        function renderDestacados() {
+            const cont = document.getElementById('carouselProductos');
+            cont.innerHTML = '';
+            destacados.forEach((p, i) => {
+                cont.innerHTML += `
+                    <div class="carousel-item${i === 0 ? ' active' : ''}">
+                        <img src="${p.imagen}" class="featured-img" alt="${p.nombre}">
+                        <div class="featured-name">${p.nombre}</div>
+                        <div class="featured-price">$${p.precio.toLocaleString()} MXN</div>
+                        <a href="./comprar.html" class="btn btn-featured">Comprar ahora</a>
+                    </div>
+                `;
+            });
+        }
+
+        // Filtros
+        let filtroCategoria = "Todos";
+        let ordenPrecio = null;
+        document.addEventListener('DOMContentLoaded', function() {
+            renderCatalogo();
+            renderDestacados();
+
+            // Categoría
+            document.querySelectorAll('.filters-bar [data-category]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filters-bar [data-category]').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    filtroCategoria = this.getAttribute('data-category');
+                    renderCatalogo(filtroCategoria, ordenPrecio);
+                });
+            });
+
+            // Precio
+            document.querySelectorAll('.filters-bar [data-price]').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    ordenPrecio = this.getAttribute('data-price');
+                    renderCatalogo(filtroCategoria, ordenPrecio);
+                });
+            });
+
+            // Botón volver arriba
+            const btnTop = document.getElementById('btn-top');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 400) {
+                    btnTop.style.display = 'flex';
+                } else {
+                    btnTop.style.display = 'none';
+                }
+            });
+            btnTop.addEventListener('click', function() {
+                window.scrollTo({top:0, behavior:'smooth'});
+            });
+
+            // Scroll suave para navbar
+            document.querySelectorAll('.navbar .nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        document.querySelector(href).scrollIntoView({behavior:'smooth'});
+                    }
+                });
+            });
+
+            // Carrusel autoplay (reinicia si usuario interactúa)
+            const carousel = document.querySelector('#carouselDestacados');
+            if (carousel) {
+                let bsCarousel = bootstrap.Carousel.getOrCreateInstance(carousel, {interval:3500, ride:'carousel'});
+                carousel.addEventListener('mouseenter', () => bsCarousel.pause());
+                carousel.addEventListener('mouseleave', () => bsCarousel.cycle());
+            }
+        });
+    </script>
+</body>
+</html>

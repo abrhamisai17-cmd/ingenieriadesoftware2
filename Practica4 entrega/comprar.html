@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Airam Zul - Comprar Anillo Aurora</title>
+    <!-- Google Fonts: Playfair Display & Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #ffffff;
+            font-family: 'Lato', Arial, sans-serif;
+            color: #23272b;
+        }
+        h1, h2, h3, .display-5 {
+            font-family: 'Playfair Display', serif;
+            color: #c59787;
+        }
+        .btn-rose-gold {
+            background: linear-gradient(90deg, #c59787 0%, #ded7c7 100%);
+            color: #fff;
+            border: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 8px rgba(197,151,135,0.12);
+        }
+        .btn-rose-gold:hover, .btn-rose-gold:focus {
+            transform: translateY(-2px) scale(1.04);
+            box-shadow: 0 4px 16px rgba(197,151,135,0.18);
+            color: #fff;
+        }
+        .btn-outline-metallic {
+            border: 2px solid #92a3ad;
+            color: #92a3ad;
+            background: transparent;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-outline-metallic:hover, .btn-outline-metallic:focus {
+            background: #92a3ad;
+            color: #fff;
+        }
+        .product-detail-section {
+            background: #ded7c7;
+            border-radius: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            box-shadow: 0 4px 24px rgba(146,163,173,0.08);
+        }
+        .img-fluid {
+            border: 4px solid #fff;
+            box-shadow: 0 4px 24px rgba(197,151,135,0.10);
+        }
+        .testimonial {
+            background: #fff;
+            border-left: 4px solid #c59787;
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            color: #444;
+            box-shadow: 0 2px 8px rgba(146,163,173,0.07);
+        }
+        .testimonial .author {
+            font-weight: bold;
+            color: #c59787;
+            font-style: normal;
+            margin-top: 0.5rem;
+            display: block;
+        }
+        @media (max-width: 767px) {
+            .img-fluid {
+                margin-bottom: 1.5rem;
+            }
+        }
+        /* Smooth scroll for html */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sección Detalle Producto -->
+    <section class="product-detail-section container">
+        <div class="row g-5 align-items-center">
+            <div class="col-md-6">
+                <img src="./img/anillo.png" alt="Anillo Aurora" class="img-fluid rounded-4 shadow-sm">
+            </div>
+            <div class="col-md-6">
+                <h2 class="display-5 mb-2">Anillo Aurora</h2>
+                <p class="fs-4 text-muted mb-2">$1,200 MXN</p>
+                <p class="mb-4" style="color:#23272b;">Elegante anillo de plata 925 con diseño exclusivo, ideal para cualquier ocasión especial. Cada pieza es cuidadosamente elaborada para reflejar lujo y distinción.</p>
+                <div class="mb-3">
+                    <label for="cantidad" class="form-label fw-bold">Cantidad</label>
+                    <input type="number" id="cantidad" class="form-control w-50" value="1" min="1" style="max-width:100px;">
+                </div>
+                <div class="mb-4">
+                    <button class="btn btn-rose-gold btn-lg me-3">Comprar ahora</button>
+                    <button class="btn btn-outline-metallic btn-lg">Agregar al carrito</button>
+                </div>
+                <hr class="my-4">
+                <p style="color:#444;">
+                    <span class="me-3"><i class="bi bi-truck"></i> Envío seguro y rápido</span> |
+                    <span class="mx-3"><i class="bi bi-shield-check"></i> Garantía de autenticidad</span> |
+                    <span class="ms-3"><i class="bi bi-chat-dots"></i> Atención personalizada</span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Testimonios -->
+        <div class="row mt-5">
+            <div class="col-lg-8 mx-auto">
+                <h3 class="mb-4" style="color:#c59787;">Testimonios</h3>
+                <div class="testimonial">
+                    “El Anillo Aurora superó mis expectativas, es aún más hermoso en persona. ¡La atención fue excelente!”<br>
+                    <span class="author">— Sofía R.</span>
+                </div>
+                <div class="testimonial">
+                    “Me encantó el empaque y la calidad. Sin duda volveré a comprar en Airam Zul.”<br>
+                    <span class="author">— Mariana L.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Final -->
+        <div class="text-center mt-5">
+            <a href="#contacto" class="btn btn-rose-gold btn-lg">Contacto</a>
+        </div>
+    </section>
+
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

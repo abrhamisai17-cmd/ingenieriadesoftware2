@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Airam Zul - Joyería de Plata</title>
+    <meta name="description" content="Airam Zul: joyería de plata con diseños exclusivos, modernos y elegantes. Descubre anillos, collares, aretes y más.">
+    <meta name="keywords" content="joyería de plata, Airam Zul, lujo, anillos, collares, aretes, joyas elegantes">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --white: #ffffff;
+            --metallic-gray: #92a3ad;
+            --beige: #ded7c7;
+            --rose-gold: #c59787;
+            --dark-gray: #23272b;
+            --light-metallic: #f4f7fa;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: var(--white);
+            color: #222;
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.5px;
+        }
+        /* Navbar */
+        .navbar {
+            background: var(--white) !important;
+            box-shadow: 0 2px 12px rgba(146,163,173,0.08);
+            font-family: 'Roboto', Arial, sans-serif;
+            transition: box-shadow 0.3s;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--rose-gold) !important;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        .nav-link {
+            color: var(--metallic-gray) !important;
+            font-weight: 500;
+            margin-right: 1rem;
+            transition: color 0.2s;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--rose-gold) !important;
+        }
+        .navbar-social a {
+            color: var(--metallic-gray);
+            margin-left: 0.7rem;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .navbar-social a:hover {
+            color: var(--rose-gold);
+        }
+        /* Hero */
+        .hero-section {
+            min-height: 100vh;
+            background: url('https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(35, 39, 43, 0.4);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s cubic-bezier(.4,0,.2,1);
+        }
+        .hero-content.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hero-title {
+            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.13);
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        .hero-btn {
+            padding: 0.7rem 2.2rem;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+            box-shadow: 0 2px 8px rgba(197,151,135,0.08);
+        }
+        .btn-rose-gold {
+            background: var(--rose-gold);
+            color: var(--white);
+            border: none;
+        }
+        .btn-rose-gold:hover {
+            background: #b07d6a;
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(197,151,135,0.18);
+        }
+        .btn-outline-metallic {
+            border: 2px solid var(--metallic-gray);
+            color: var(--metallic-gray);
+            background: transparent;
+        }
+        .btn-outline-metallic:hover {
+            background: var(--metallic-gray);
+            color: var(--white);
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(146,163,173,0.15);
+        }
+        /* Destacados */
+        .featured-section {
+            padding: 4rem 0 3rem 0;
+            background: var(--white);
+        }
+        .featured-title {
+            text-align: center;
+            font-size: 2.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--rose-gold);
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .product-card {
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 2px 18px rgba(146,163,173,0.10);
+            transition: transform 0.25s, box-shadow 0.25s;
+            overflow: hidden;
+            background: var(--white);
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 32px rgba(197,151,135,0.13);
+        }
+        .product-img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .product-card:hover .product-img {
+            transform: scale(1.08);
+        }
+        .product-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-price {
+            color: var(--rose-gold);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .product-btn {
+            background: var(--rose-gold);
+            color: var(--white);
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .product-btn:hover {
+            background: #b07d6a;
+            transform: scale(1.05);
+        }
+        /* Valores */
+        .values-section {
+            background: var(--beige);
+            padding: 4rem 0 3rem 0;
+        }
+        .values-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--rose-gold);
+            margin-bottom: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--rose-gold);
+            margin-bottom: 1rem;
+        }
+        .value-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .value-desc {
+            color: #444;
+            font-size: 1rem;
+        }
+        /* Testimonios */
+        .testimonials-section {
+            background: var(--light-metallic);
+            padding: 4rem 0 3rem 0;
+        }
+        .testimonials-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--rose-gold);
+            margin-bottom: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--rose-gold);
+            margin-bottom: 1rem;
+        }
+        .testimonial-text {
+            font-size: 1.1rem;
+            color: #333;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .testimonial-name {
+            font-weight: 500;
+            color: var(--metallic-gray);
+            font-size: 1rem;
+        }
+        /* Blog */
+        .blog-section {
+            padding: 4rem 0 3rem 0;
+            background: var(--white);
+        }
+        .blog-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--rose-gold);
+            margin-bottom: 2.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .blog-card {
+            border: none;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(146,163,173,0.10);
+            transition: transform 0.22s, box-shadow 0.22s;
+            overflow: hidden;
+            background: var(--white);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 32px rgba(197,151,135,0.13);
+        }
+        .blog-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .blog-body {
+            padding: 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        .blog-card-desc {
+            color: #444;
+            font-size: 0.98rem;
+            flex: 1;
+        }
+        /* CTA Final */
+        .cta-section {
+            background: linear-gradient(rgba(35,39,43,0.55), rgba(35,39,43,0.55)), url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            padding: 5rem 0 5rem 0;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+        .cta-title {
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .cta-btn {
+            background: var(--rose-gold);
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            padding: 0.8rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+            box-shadow: 0 2px 8px rgba(197,151,135,0.13);
+        }
+        .cta-btn:hover {
+            background: #b07d6a;
+            transform: scale(1.05);
+        }
+        /* Footer */
+        .footer {
+            background: #23272b;
+            color: var(--white);
+            padding: 3rem 0 1.2rem 0;
+            font-size: 1rem;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--rose-gold);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.7rem;
+            display: inline-block;
+        }
+        .footer-desc {
+            color: #bfc7ce;
+            font-size: 0.98rem;
+            margin-bottom: 1.2rem;
+        }
+        .footer-links a {
+            color: #bfc7ce;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: var(--rose-gold);
+        }
+        .footer-social a {
+            color: #bfc7ce;
+            font-size: 1.3rem;
+            margin-right: 1.1rem;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover {
+            color: var(--rose-gold);
+        }
+        .footer-bottom {
+            border-top: 1px solid #3a4046;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            text-align: center;
+            color: #bfc7ce;
+            font-size: 0.95rem;
+        }
+        /* Botón Volver Arriba */
+        #backToTop {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 999;
+            background: var(--rose-gold);
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 4px 16px rgba(197,151,135,0.18);
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        #backToTop.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        /* Responsive */
+        @media (max-width: 991px) {
+            .hero-title { font-size: 2.1rem; }
+            .hero-section { min-height: 70vh; }
+            .product-img { height: 200px; }
+            .blog-img { height: 140px; }
+        }
+        @media (max-width: 767px) {
+            .hero-title { font-size: 1.5rem; }
+            .hero-section { min-height: 60vh; }
+            .product-img { height: 160px; }
+            .blog-img { height: 100px; }
+            .footer { text-align: center; }
+            .footer .row > div { margin-bottom: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="#">Airam Zul</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="./index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Colección.html">Colección</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./Nosotros.html">Sobre Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="./contacto.html">Contacto</a></li>
+                </ul>
+                <div class="navbar-social ms-lg-3 mt-3 mt-lg-0">
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section" id="inicio">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">La elegancia hecha plata</h1>
+            <p class="hero-subtitle">Airam Zul: joyería única para cada momento especial.</p>
+            <a href="./Colección.html" class="hero-btn btn-rose-gold me-2">Ver Colección</a>
+            <a href="./Nosotros.html" class="hero-btn btn-outline-metallic">Conócenos</a>
+        </div>
+    </section>
+
+    <!-- Destacados -->
+    <section class="featured-section" id="coleccion">
+        <h2 class="featured-title">Colección Destacada</h2>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card product-card h-100">
+                        <img src="./img/anillo.png" alt="Anillo de Plata" class="product-img">
+                        <div class="card-body text-center">
+                            <div class="product-name">Anillo Aurora</div>
+                            <div class="product-price">$1,200 MXN</div>
+                            <a href="./comprar.html" class="product-btn">Comprar ahora</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card product-card h-100">
+                        <img src="./img/collar.png" alt="Collar de Plata" class="product-img">
+                        <div class="card-body text-center">
+                            <div class="product-name">Collar Luna</div>
+                            <div class="product-price">$1,800 MXN</div>
+                            <a href="./comprar.html" class="product-btn">Comprar ahora</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card product-card h-100">
+                        <img src="./img/aretes.png" alt="Aretes de Plata" class="product-img">
+                        <div class="card-body text-center">
+                            <div class="product-name">Aretes Brisa</div>
+                            <div class="product-price">$950 MXN</div>
+                            <a href="./comprar.html" class="product-btn">Comprar ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores de la Marca -->
+    <section class="values-section" id="nosotros">
+        <h2 class="values-title">Airam Zul, más que joyas</h2>
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="value-icon"><i class="bi bi-gem"></i></div>
+                    <div class="value-title">Diseño Exclusivo</div>
+                    <div class="value-desc">Cada pieza es creada con pasión y detalle, reflejando elegancia y originalidad.</div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="value-icon"><i class="bi bi-box-seam"></i></div>
+                    <div class="value-title">Plata de Alta Calidad</div>
+                    <div class="value-desc">Utilizamos plata 925 certificada para garantizar brillo y durabilidad excepcionales.</div>
+                </div>
+                <div class="col-md-4">
+                    <div class="value-icon"><i class="bi bi-truck"></i></div>
+                    <div class="value-title">Envíos Seguros y Rápidos</div>
+                    <div class="value-desc">Tu joya llegará a tus manos con empaque seguro y en el menor tiempo posible.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials-section" id="testimonios">
+        <h2 class="testimonials-title">Clientes Satisfechos</h2>
+        <div class="container">
+            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active text-center">
+                        <img src="https://images.pexels.com/photos/1130626/pexels-photo-1130626.jpeg?auto=compress&w=100&h=100&fit=crop" alt="Cliente 1" class="testimonial-img mx-auto">
+                        <div class="testimonial-text">“El anillo que compré en Airam Zul superó todas mis expectativas.”</div>
+                        <div class="testimonial-name">María G.</div>
+                    </div>
+                    <div class="carousel-item text-center">
+                        <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&w=100&h=100&fit=crop" alt="Cliente 2" class="testimonial-img mx-auto">
+                        <div class="testimonial-text">“Calidad y diseño inigualables, volveré a comprar sin duda.”</div>
+                        <div class="testimonial-name">Andrea L.</div>
+                    </div>
+                    <div class="carousel-item text-center">
+                        <img src="https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&w=100&h=100&fit=crop" alt="Cliente 3" class="testimonial-img mx-auto">
+                        <div class="testimonial-text">“Me encantó el servicio y la presentación de la joya.”</div>
+                        <div class="testimonial-name">Sofía R.</div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Siguiente</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog / Inspiración -->
+    <section class="blog-section" id="blog">
+        <h2 class="blog-title">Inspiración en Joyería</h2>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card blog-card h-100">
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Cómo cuidar tus joyas de plata" class="blog-img">
+                        <div class="blog-body">
+                            <div class="blog-card-title">Cómo cuidar tus joyas de plata</div>
+                            <div class="blog-card-desc">Descubre los mejores consejos para mantener el brillo y la belleza de tus piezas favoritas.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card blog-card h-100">
+                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Tendencias en joyería para 2025" class="blog-img">
+                        <div class="blog-body">
+                            <div class="blog-card-title">Tendencias en joyería para 2025</div>
+                            <div class="blog-card-desc">Conoce los estilos y diseños que marcarán tendencia en el mundo de la joyería de plata.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card blog-card h-100">
+                        <img src="./img/proceso.jpeg" alt="El arte detrás de cada pieza Airam Zul" class="blog-img">
+                        <div class="blog-body">
+                            <div class="blog-card-title">El arte detrás de cada pieza Airam Zul</div>
+                            <div class="blog-card-desc">Explora el proceso creativo y la inspiración que hay detrás de nuestras joyas exclusivas.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-section" id="contacto">
+        <div class="container">
+            <h2 class="cta-title">Descubre la colección completa de Airam Zul y brilla con elegancia</h2>
+            <a href="./Colección.html" class="cta-btn">Explorar Colección</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer mt-0">
+        <div class="container">
+            <div class="row text-md-start text-center">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <span class="footer-logo">Airam Zul</span>
+                    <div class="footer-desc">Joyería de plata con diseños exclusivos, modernos y elegantes. Cada pieza es una obra de arte para tus momentos más especiales.</div>
+                </div>
+                <div class="col-md-4 mb-4 mb-md-0 footer-links">
+                    <div class="mb-2 fw-bold" style="color:var(--rose-gold);">Links rápidos</div>
+                    <a href="./index.html">Inicio</a>
+                    <a href="./Colección.html">Colección</a>
+                    <a href="./Nosotros.html">Sobre Nosotros</a>
+                    <a href="./contacto.html">Contacto</a>
+                </div>
+                <div class="col-md-4 footer-social">
+                    <div class="mb-2 fw-bold" style="color:var(--rose-gold);">Síguenos</div>
+                    <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://wa.me/" target="_blank" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom mt-4">
+                © 2025 Airam Zul. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Volver Arriba -->
+    <button id="backToTop" aria-label="Volver arriba"><i class="bi bi-chevron-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scroll para navegación
+        document.querySelectorAll('a.nav-link, .hero-btn, .cta-btn, .footer-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Animación fade-in en Hero
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.querySelector('.hero-content').classList.add('visible');
+            }, 200);
+        });
+
+        // Botón Volver Arriba
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 350) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Carrusel de testimonios automático (Bootstrap ya lo hace, pero forzamos loop)
+        const testimonialCarousel = document.getElementById('testimonialCarousel');
+        if (testimonialCarousel) {
+            testimonialCarousel.addEventListener('slid.bs.carousel', function () {
+                // Reinicia el intervalo si es necesario (opcional)
+            });
+        }
+    </script>
+</body>
+</html></div>
