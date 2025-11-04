@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Menú Digital</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg-dark:#121315;
+            --card-dark:#1c1d20;
+            --gold:#f0c24a;
+            --accent:#ff7a18;
+            --muted:#bfbfbf;
+            --white:#000000;
+            
+        }
+        html{
+            scroll-behavior: smooth;
+        }
+        body{
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(180deg, #0f0f10 0%, #0b0b0c 100%);
+            color: var(--muted);
+            padding-top: 90px; /* space for navbar */
+        }
+
+        /* Navbar */
+        .navbar-custom{
+            background: linear-gradient(90deg, rgba(18,19,21,0.95), rgba(24,24,26,0.95));
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+            backdrop-filter: blur(6px);
+        }
+        .brand-title{
+            display:flex;
+            align-items:center;
+            gap:.6rem;
+            color:#ffffff;
+            font-weight:700;
+        }
+        .brand-title img{ border-radius:8px; }
+
+        /* Header Hero */
+        .hero{
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+            padding: 2rem 1rem;
+            margin-bottom: 1.25rem;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+            color:var(--white);
+        }
+        .hero h1{
+            color:#ffffff;
+            font-weight:700;
+        }
+        .hero p{ color:var(--muted); }
+
+        /* Cards */
+        .menu-card{
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+            border: 1px solid rgba(255,255,255,0.04);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform .25s ease, box-shadow .25s ease;
+            box-shadow: 0 6px 16px rgba(2,2,2,0.6);
+        }
+        .menu-card:hover{
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 16px 30px rgba(2,2,2,0.7);
+        }
+        .menu-card .card-img-top{
+            object-fit: cover;
+            height: 170px;
+        }
+        .price-badge{
+            background: linear-gradient(90deg,var(--gold),var(--accent));
+            color: #111;
+            font-weight:700;
+            padding: 6px 10px;
+            border-radius: 999px;
+            font-size: .95rem;
+        }
+        .chip{
+            display:inline-block;
+            background: rgba(255,255,255,0.03);
+            border:1px solid rgba(255,255,255,0.03);
+            color:var(--muted);
+            padding:.25rem .5rem;
+            border-radius: 999px;
+            font-size:.82rem;
+            margin-right:.35rem;
+            margin-bottom:.35rem;
+        }
+
+        /* Section Titles */
+        .section-title{
+            color:var(--white);
+            font-weight:700;
+            letter-spacing:.2px;
+        }
+        .section-sub{
+            color:var(--muted);
+            font-size:.95rem;
+        }
+
+        /* List styles */
+        .ingredients{ color:var(--muted); font-size:.92rem; margin:0; padding-left:1rem; }
+
+        /* Table for Yakimeshi (responsive) */
+        .yak-table th{
+            color:var(--white);
+            background: rgba(255,255,255,0.02);
+            border: none;
+            font-weight:600;
+        }
+        .yak-table td{
+            color:var(--muted);
+            vertical-align: middle;
+            border: none;
+        }
+
+        /* Footer */
+        footer{
+            margin-top:2rem;
+            padding:2rem 1rem;
+            background: linear-gradient(0deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+            border-top: 1px solid rgba(255,255,255,0.03);
+            color:var(--muted);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width:576px){
+            .menu-card .card-img-top{ height:140px; }
+            .hero{ padding:1rem; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand brand-title" href="#">
+                <img src="./unnamed-Photoroom.png" alt="logo" width="100" height="100">
+                Menú Digital
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMain">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link text-white" href="#frios">FRÍOS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#yakimeshi">YAKIMESHI</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#gohan">GOHAN</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#snacks">SNACKS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#boneless">BONELESS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#bebidas">BEBIDAS</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#complementos">COMPLEMENTOS</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+
+        <!-- HERO / HEADER -->
+        <section class="hero">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1>Menú Digital — Sabor y estilo</h1>
+                    <p class="mb-0">Diseño moderno, limpio y totalmente responsivo. Colores: gris oscuro, oro, blanco y acentos naranja.</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <span class="price-badge"><i class="bi bi-star-fill me-2"></i>Promoción: Sushi 2x1 todos los días (FRÍOS)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FRÍOS -->
+        <section id="frios" class="mb-5">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <div>
+                    <h3 class="section-title mb-0">FRÍOS</h3>
+                    <small class="section-sub">Sushi — Rolls destacados</small>
+                </div>
+                <div>
+                    <span class="chip"><i class="bi bi-gift-fill me-1"></i>2x1 diario</span>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <!-- Repeat card pattern for each roll -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://www.bristolfarms.com/getmedia/eeebe323-9d1d-43c8-a41f-6a063ee0589b/524a59a2-2f75-41a6-b942-3564eca50be8.jpg" class="card-img-top" alt="Avocado Roll">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title text-white mb-0">Avocado Roll</h5>
+                                <div class="price-badge">$160</div>
+                            </div>
+                            <p class="ingredients mb-2">Roll con aguacate, arroz, salsa especial.</p>
+                            <ul class="ingredients mb-0">
+                                <li>Arroz sushi</li>
+                                <li>Aguacate</li>
+                                <li>Salsa de soya</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://tofuu.getjusto.com/orioneat-local/resized2/qZkPYKnyLc7PhmCtH-2400-x.webp" class="card-img-top" alt="Nevado Roll">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title text-white mb-0">Nevado Roll</h5>
+                                <div class="price-badge">$165</div>
+                            </div>
+                            <p class="ingredients mb-2">Roll cremoso con queso y topping de salsa.</p>
+                            <ul class="ingredients mb-0">
+                                <li>Queso crema</li>
+                                <li>Pescado</li>
+                                <li>Topping especial</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRglMnjZHRog5005FrY3fcotrCJACddB9l_8w&s" class="card-img-top" alt="Taki Roll">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title text-white mb-0">Taki Roll</h5>
+                                <div class="price-badge">$155</div>
+                            </div>
+                            <p class="ingredients mb-2">Crujiente y sabroso.</p>
+                            <ul class="ingredients mb-0">
+                                <li>Tempura</li>
+                                <li>Salsa picante</li>
+                                <li>Vegetales</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More rolls -->
+                <div class="col-sm-6 col-lg-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://img0.didiglobal.com/static/soda_public/do1_83kMsZzbtdHCeq8YF4yN" class="card-img-top" alt="Dori Roll">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title text-white mb-0">Dori Roll</h5>
+                                <div class="price-badge">$155</div>
+                            </div>
+                            <p class="ingredients mb-2">Texto descriptivo corto del roll.</p>
+                            <ul class="ingredients mb-0">
+                                <li>Ingredientes principales</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGj-H7ZTScq9lVeT1-2lAGCtjA-wqd_fmnaw&s" class="card-img-top" alt="Ruffles Roll">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h5 class="card-title text-white mb-0">Ruffles Roll</h5>
+                                <div class="price-badge">$155</div>
+                            </div>
+                            <p class="ingredients mb-2">Roll con textura crocante.</p>
+                            <ul class="ingredients mb-0">
+                                <li>Rebozado crujiente</li>
+                                <li>Salsas varias</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dips group -->
+                <div class="col-12">
+                    <div class="menu-card card p-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-1 text-white">Dips</h5>
+                                <small class="text-muted">Todos los dips $15</small>
+                            </div>
+                            <div class="price-badge">$15</div>
+                        </div>
+                        <div class="mt-3 d-flex flex-wrap">
+                            <span class="chip" style="color: wheat;">Tampico</span>
+                            <span class="chip" style="color: wheat;">Chipotle</span>
+                            <span class="chip" style="color: wheat;">Sriracha</span>
+                            <span class="chip" style="color: wheat;">Anguila</span>
+                            <span class="chip" style="color: wheat;">Mango Habanero</span>
+                            <span class="chip" style="color: wheat;">BBQ</span>
+                            <span class="chip" style="color: wheat;">Búfalo</span>
+                            <span class="chip" style="color: wheat;">Spicy</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- YAKIMESHI -->
+        <section id="yakimeshi" class="mb-5">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <div>
+                    <h3 class="section-title mb-0 text-white">YAKIMESHI</h3>
+                    <small class="section-sub">Arroz salteado — opciones y extras</small>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-lg-8">
+                    <div class="menu-card card p-3 h-100">
+                        <div class="table-responsive">
+                            <table class=" yak-table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-white">Opción</th>
+                                        <th class="text-end">Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-white">Sencillo</td>
+                                        <td class="text-end text-white">$59</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-white">Res</td>
+                                        <td class="text-end text-white">$69</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-white">Pollo</td>
+                                        <td class="text-end text-white">$69</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-white">Tampico</td>
+                                        <td class="text-end text-white">$69</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-white">Especial</td>
+                                        <td class="text-end text-white">$99</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-white">Camarón / Pulpo</td>
+                                        <td class="text-end text-white">$90</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extras card -->
+                <div class="col-lg-4">
+                    <div class="menu-card card h-100 p-3">
+                        <h5 class="text-white">Extras</h5>
+                        <ul class="mt-2 mb-0">
+                            <li class="d-flex justify-content-between text-white" style="color: wheat;"><span>Queso Philadelphia</span><strong class="text-white">$15</strong></li>
+                            <li class="d-flex justify-content-between text-white" style="color: wheat;"><span>Mango o pepino</span><strong class="text-white">$15</strong></li>
+                            <li class="d-flex justify-content-between text-white" style="color: wheat;"><span>Camarón empanizado</span><strong class="text-white">$25</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GOHAN -->
+        <section id="gohan" class="mb-5">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <div>
+                    <h3 class="section-title mb-0">GOHAN</h3>
+                    <small class="section-sub">Platos individuales — con foto y descripción</small>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-sm-6 col-md-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://assets.tmecosys.com/image/upload/t_web_rdp_recipe_584x480_1_5x/img/recipe/ras/Assets/05BAB5CB-F8B6-487D-A509-F38031EA2708/Derivates/a7007c8f-7d82-4565-b546-56901e503c40.jpg" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white mb-0">Gohan sencillo</h5>
+                                <div class="price-badge">$69</div>
+                            </div>
+                            <p class="ingredients mt-2">Arroz al estilo tradicional.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYn8nBVyOh1rh0V6KcCSDYTYfRPrFynO7IHg&s" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white mb-0">Vegetariano</h5>
+                                <div class="price-badge">$79</div>
+                            </div>
+                            <p class="ingredients mt-2">Verduras salteadas y arroz.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://tofuu.getjusto.com/orioneat-local/resized2/bSrvTgXgR84Zyj5fR-2400-x.webp" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white mb-0">Gohan Chicken</h5>
+                                <div class="price-badge">$99</div>
+                            </div>
+                            <p class="ingredients mt-2">Pollo teriyaki con arroz.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRqj0biJzMrvdsgMMcYCFywJEvkNAOXeZOww&s" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white mb-0">Gohan Res</h5>
+                                <div class="price-badge">$99</div>
+                            </div>
+                            <p class="ingredients mt-2">Res en salsa especial.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqeYLQjwi9NTijDts0KSRI_l-VZqKPPf7NNQ&s" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white mb-0">Gohan Mariscos</h5>
+                                <div class="price-badge">$150</div>
+                            </div>
+                            <p class="ingredients mt-2">Camarón, pulpo y más.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4">
+                    <div class="menu-card card h-100">
+                        <img src="https://i.ytimg.com/vi/tixBuZZ0zRA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDXyFmUhYvTGerHe3AyDfYv90EcYA" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <h5 class="text-white mb-0">Gohan Tropical</h5>
+                                <div class="price-badge">$139</div>
+                            </div>
+                            <p class="ingredients mt-2">Toques frutales y especias.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SNACKS -->
+        <section id="snacks" class="mb-5">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <div>
+                    <h3 class="section-title mb-0">SNACKS</h3>
+                    <small class="section-sub">Acompañamientos y dips</small>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="menu-card card h-100 p-3">
+                        <h5 class="text-white">Papas a la francesa</h5>
+                        <div class="price-badge mt-2">$59</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="menu-card card h-100 p-3">
+                        <h5 class="text-white">Aros de cebolla</h5>
+                        <div class="price-badge mt-2">$69</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="menu-card card h-100 p-3">
+                        <h5 class="text-white">Nuggets de pollo</h5>
+                        <div class="price-badge mt-2">$59</div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="menu-card card h-100 p-3">
+                        <h5 class="text-white">Papas gajo</h5>
+                        <div class="price-badge mt-2">$69</div>
+                    </div>
+                </div>
+
+                <!-- Dips list for snacks -->
+                <div class="col-12">
+                    <div class="menu-card card p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="mb-0 text-white">Dips</h5>
+                            <small class="text-muted">Todos $15</small>
+                        </div>
+                        <div class="d-flex flex-wrap mt-2">
+                            <span class="chip" style="color: wheat;">BBQ</span>
+                            <span class="chip" style="color: wheat;">Anguila</span>
+                            <span class="chip" style="color: wheat;">Sriracha</span>
+                            <span class="chip" style="color: wheat;">Mango Habanero</span>
+                            <span class="chip" style="color: wheat;">Chipotle</span>
+                            <span class="chip" style="color: wheat;">Tampico</span>
+                            <span class="chip" style="color: wheat;">Búfalo</span>
+                            <span class="chip" style="color: wheat;">Ranch</span>
+                            <span class="chip" style="color: wheat;">Spicy</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BONELESS -->
+        <section id="boneless" class="mb-5">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <div>
+                    <h3 class="section-title mb-0">BONELESS</h3>
+                    <small class="section-sub">Sabores disponibles</small>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h5 class="text-white">Boneless</h5>
+                        <div class="price-badge mt-2">$109</div>
+                        <p class="ingredients mt-2 mb-0">Sabor: Mango Habanero</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h5 class="text-white">Boneless</h5>
+                        <div class="price-badge mt-2">$109</div>
+                        <p class="ingredients mt-2 mb-0">Sabor: Buffalo</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h5 class="text-white">Boneless</h5>
+                        <div class="price-badge mt-2">$109</div>
+                        <p class="ingredients mt-2 mb-0">Sabor: Lemon Pepper</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h5 class="text-white">Boneless</h5>
+                        <div class="price-badge mt-2">$109</div>
+                        <p class="ingredients mt-2 mb-0">Sabor: BBQ</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- BEBIDAS -->
+        <section id="bebidas" class="mb-5">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <div>
+                    <h3 class="section-title mb-0">BEBIDAS</h3>
+                    <small class="section-sub">Refrescos y bebidas</small>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h6 class="text-white">Calpi Sui</h6>
+                        <div class="price-badge mt-2">$35</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h6 class="text-white">Coca Cola</h6>
+                        <div class="price-badge mt-2">$25</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h6 class="text-white">F. Tea Limón</h6>
+                        <div class="price-badge mt-2">$25</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h6 class="text-white">F. Tea Negro</h6>
+                        <div class="price-badge mt-2">$25</div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <div class="menu-card card h-100 p-3 text-center">
+                        <h6 class="text-white">F. Tea Durazno</h6>
+                        <div class="price-badge mt-2">$25</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPLEMENTOS -->
+        <section id="complementos" class="mb-5">
+            <div class="d-flex justify-content-between align-items-end mb-3">
+                <div>
+                    <h3 class="section-title mb-0">COMPLEMENTOS</h3>
+                    <small class="section-sub">Sushi Ball, Temaki, Nigiri</small>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <!-- Sushi Ball group -->
+
+
+                <!-- Temaki -->
+                <div class="col-md-6">
+                    <div class="menu-card card p-3">
+                        <h5 class="text-white mb-3">Temaki (2 piezas)</h5>
+                        <ul class="mb-0">
+                            <li class="d-flex justify-content-between"><span class="text-white" style="color: wheat;">Camarón</span><strong class="text-white">$80</strong></li>
+                            <li class="d-flex justify-content-between"><span class="text-white" style="color: wheat;">Vegetariano</span><strong class="text-white">$70</strong></li>
+                            <li class="d-flex justify-content-between"><span class="text-white" style="color: wheat;">Pulpo</span><strong class="text-white">$99</strong></li>
+                            <li class="d-flex justify-content-between"><span class="text-white" style="color: wheat;">Tropical</span><strong class="text-white">$89</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Nigiri -->
+                <div class="col-md-6">
+                    <div class="menu-card card p-3">
+                        <h5 class="text-white mb-3">Nigiri</h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span  style="color: wheat;">3 piezas</span>
+                            <strong class="text-white">$99</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="row gy-3">
+                <div class="col-md-4">
+                    <h5 class="text-white">Dirección</h5>
+                    <p class="mb-0">C. la Piscina 1002, Loma Bonita, 37420 León de los Aldama, Gto.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-white">Contacto</h5>
+                    <p class="mb-0"><i class="bi bi-telephone-fill me-2"></i>Tel:  477 851 2424</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-white">Redes</h5>
+                    <div class="d-flex gap-2">
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-whatsapp"></i></a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="bi bi-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <small class="text-muted">© 2025 Menú Digital — Diseño editable y responsivo</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html></div>
