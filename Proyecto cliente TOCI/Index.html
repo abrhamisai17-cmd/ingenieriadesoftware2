@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOCI Calzado Artesanal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #13273f;
+            --bg-main: #f5f2ec;
+            --accent: #c2bbb5;
+            --white: #fff;
+            --shadow: 0 8px 32px rgba(32,47,121,0.10);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg-main);
+            color: var(--primary);
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.2s;
+        }
+
+        nav a::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s;
+            position: absolute;
+            left: 0; bottom: -4px;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Premium */
+        .hero-premium {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            background: #13273f;
+            min-height: 90vh;
+        }
+
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        .hero-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.08);
+            transition: transform 6s ease;
+        }
+
+        .hero-premium:hover .hero-media img {
+            transform: scale(1);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background: linear-gradient(120deg, rgba(32,47,121,0.85) 20%, rgba(32,47,121,0.55) 55%, rgba(194,187,181,0.25) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 680px;
+            padding: 0 2.5rem;
+            color: #fff;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.9rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            line-height: 1.05;
+            margin-bottom: 1.8rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            max-width: 520px;
+            margin-bottom: 3rem;
+            color: #f1f1f1;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-cta {
+            padding: 0.9rem 2.4rem;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #ffffff, #f5f2ec);
+            color: #13273f;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(32,47,121,0.25);
+        }
+
+        /* Premium Chronicle */
+        .premium-chronicle {
+            --c-primary: #13273f;
+            --c-accent: #c2bbb5;
+            background: #fff;
+            padding: 3% 0;
+            position: relative;
+            color: var(--c-primary);
+        }
+
+        .chronicle-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 10%;
+        }
+
+        .chronicle-line-track {
+            position: absolute;
+            left: 50%;
+            top: 25%;
+            bottom: 22%;
+            width: 2px;
+            background: rgba(194, 187, 181, 0.2);
+            transform: translateX(-50%);
+        }
+
+        .chronicle-progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--c-primary);
+            transition: height 0.1s linear;
+        }
+
+        .editorial-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 0.9;
+            margin-bottom: 120px;
+            letter-spacing: -0.02em;
+        }
+
+        .accent-text {
+            color: var(--c-accent);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .chronicle-node {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10%;
+            align-items: center;
+            margin-bottom: 8%;
+            position: relative;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .chronicle-node.reversed {
+            direction: rtl;
+        }
+
+        .chronicle-node.reversed .node-content {
+            direction: ltr;
+        }
+
+        .node-year {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.4em;
+            color: var(--c-accent);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .node-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .node-body p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: rgba(32, 47, 121, 0.85);
+            max-width: 450px;
+            text-align: justify;
+        }
+
+        .visual-frame {
+            position: relative;
+            padding: 20px;
+            border: 1px solid rgba(194, 187, 181, 0.3);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            max-width: 70%; /* Limita el ancho del cuadro */
+            margin: 0 auto;   
+        }
+
+        .visual-frame img {
+            width: 100%;
+            display: block;
+            filter: sepia(0.2) contrast(1.05);
+        }
+
+        .chronicle-node:hover .visual-frame {
+            transform: translateY(-10px);
+        }
+
+        /* Calidad Section */
+        .calidad-section {
+            background: var(--bg-main);
+            padding: 160px 5%;
+            overflow: hidden;
+        }
+
+        .calidad-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .calidad-header {
+            text-align: left;
+            margin-bottom: 80px;
+            border-left: 4px solid var(--primary);
+            padding-left: 30px;
+        }
+
+        .calidad-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--primary);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .calidad-header p {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.9rem;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+
+        .calidad-grid-premium {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 30px;
+        }
+
+        .quality-item {
+            position: relative;
+            background: var(--white);
+            padding: 60px 40px;
+            min-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            overflow: hidden;
+            border: 1px solid rgba(32, 47, 121, 0.05);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .item-materiales { grid-column: span 5; }
+        .item-detalle { grid-column: span 7; }
+        .item-durabilidad { 
+            grid-column: span 12; 
+            min-height: 350px; 
+            flex-direction: row; 
+            align-items: flex-end; 
+        }
+
+        .quality-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(32,47,121,0.12);
+            border-color: var(--accent);
+        }
+
+        .quality-bg-reveal {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transform: scale(1.1);
+            transition: all 0.8s ease;
+            z-index: 1;
+            filter: brightness(0.4) grayscale(100%);
+        }
+
+        .quality-item:hover .quality-bg-reveal {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .quality-content {
+            position: relative;
+            z-index: 2;
+            transition: all 0.5s ease;
+        }
+
+        .quality-item:hover .quality-content {
+            color: var(--white);
+        }
+
+        .q-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            opacity: 0.1;
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: 0.5s;
+        }
+
+        .quality-item:hover .q-number {
+            opacity: 0.5;
+            transform: translateY(10px);
+        }
+
+        .quality-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .quality-item p {
+            font-size: 1rem;
+            max-width: 80%;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Hero Split */
+        .hero-split {
+            display: flex;
+            height: 90vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background-color: #202f79;
+        }
+
+        .split-slider {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out, transform 6s linear;
+        }
+
+        .slide.active {
+            opacity: 0.6;
+            transform: scale(1.1);
+        }
+
+        .split-content {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .content-box {
+            background: rgba(32, 47, 121, 0.9);
+            padding: 60px;
+            text-align: center;
+            color: var(--white);
+            max-width: 500px;
+            pointer-events: auto;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .eyebrow {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-size: 0.75rem;
+            margin-bottom: 20px;
+            color: #c2bbb5;
+        }
+
+        .content-box h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .btn-mexa {
+            display: inline-block;
+            background: var(--white);
+            color: #202f79;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-mexa:hover {
+            background: #c2bbb5;
+            transform: translateY(-3px);
+        }
+
+        .split-fixed {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .fixed-img {
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.8);
+        }
+
+        .overlay-texture {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, #202f79, transparent);
+            opacity: 0.4;
+        }
+
+        /* Compromiso Inmersivo */
+        .compromiso-inmersivo {
+            padding: 5% 0;
+            background-color: #f4f1ee;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bg-scroll-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25vw;
+            font-weight: 900;
+            color: #c2bbb5;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .compromiso-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .main-image-wrapper {
+            width: 100%;
+            aspect-ratio: 4/5;
+            overflow: hidden;
+            border-radius: 200px 200px 0 0;
+            box-shadow: 0 40px 80px rgba(32, 47, 121, 0.15);
+        }
+
+        .reveal-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .sello-autenticidad {
+            position: absolute;
+            bottom: 24%;
+            right: -10%;
+            width: 140px;
+            height: 140px;
+            z-index: 5;
+            background: #202f79;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .sello-autenticidad svg {
+            width: 80%;
+            height: 80%;
+            fill: #c0b9b3;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            animation: rotateSello 10s linear infinite;
+        }
+
+        #circlePath { fill: none; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #202f79;
+            line-height: 1;
+            margin-bottom: 20px;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 1s ease-out;
+        }
+
+        .serif-bold {
+            font-weight: 700;
+            display: block;
+            color: #202f79;
+        }
+
+        .divider-minimal {
+            width: 60px;
+            height: 3px;
+            background-color: #c0b9b3;
+            margin: 30px 0;
+        }
+
+        .main-desc {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 50px;
+            color: rgba(32, 47, 121, 0.8);
+        }
+
+        .interactive-values {
+            margin-top: 50px;
+        }
+
+        .value-item {
+            border-bottom: 1px solid rgba(192, 185, 179, 0.4);
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .value-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #202f79;
+        }
+
+        .value-detail {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #202f79;
+            opacity: 0.6;
+        }
+
+        /* Footer */
+        .footer-premium {
+            background-color: #f8f7f5;
+            padding: 2% 5% 2% 5%;
+            position: relative;
+            border-top: 1px solid rgba(32, 47, 121, 0.1);
+        }
+
+        .footer-inner {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-branding {
+            text-align: center;
+            margin-bottom: 1%;
+        }
+
+        .branding-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(5rem, 15vw, 12rem);
+            color: #202f79;
+            line-height: 0.8;
+            margin: 0;
+            letter-spacing: -0.03em;
+            font-weight: 700;
+        }
+
+        .branding-sub {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5em;
+            font-size: 0.9rem;
+            color: #c0b9b3;
+            margin-top: 20px;
+        }
+
+        .footer-nav-minimal {
+            width: 100%;
+            border-top: 1px solid #202f79;
+            border-bottom: 1px solid #202f79;
+            padding: 15px 0;
+            margin-bottom: 20px;
+        }
+
+        .nav-links-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+        @media (max-width: 500px) {
+            .nav-links-row {
+                    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-direction: column;
+            }
+        }
+
+        .nav-item {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #202f79;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .nav-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #c0b9b3;
+            border-radius: 50%;
+        }
+
+        .nav-item:hover {
+            font-style: italic;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom-meta {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .email-link {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            color: #202f79;
+            text-decoration: none;
+            font-weight: 300;
+            border-bottom: 1px solid transparent;
+            transition: border 0.3s;
+        }
+
+        .email-link:hover {
+            border-bottom: 1px solid #202f79;
+        }
+
+        .social-minimal a {
+            margin-left: 30px;
+            color: #202f79;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+        }
+
+        .footer-legal {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            color: #c0b9b3;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .legal-dots a {
+            margin-left: 20px;
+            color: #c0b9b3;
+            text-decoration: none;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(60px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes rotateSello {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1100px) {
+            .chronicle-node {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .chronicle-line-track { 
+                left: 5%; 
+            }
+            
+            .chronicle-node, .chronicle-node.reversed {
+                padding-left: 10%;
+            }
+            
+            .node-body p { 
+                max-width: 100%; 
+            }
+            
+            .item-materiales, .item-detalle, .item-durabilidad {
+                grid-column: span 12;
+                min-height: 400px;
+            }
+            
+            .item-durabilidad { 
+                flex-direction: column; 
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1.2rem;
+                padding: 1rem 1rem;
+            }
+            
+            .hero-content {
+                padding: 0 1.5rem;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.2rem;
+            }
+            
+            .hero-split { 
+                flex-direction: column; 
+                height: auto; 
+            }
+            
+            .split-content { 
+                position: relative; 
+                padding: 40px 0; 
+            }
+            
+            .content-box { 
+                width: 90%; 
+                padding: 30px; 
+            }
+            
+            .compromiso-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-bottom-meta {
+                flex-direction: column;
+                gap: 30px;
+                align-items: flex-start;
+            }
+            
+            .social-minimal a {
+                margin-left: 0;
+                margin-right: 30px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1.2rem;
+                padding: 1rem 1rem;
+            }
+            
+            .timeline-section, .calidad-section, .compromiso-section, .artesanal-section {
+                padding: 3.5rem 1rem;
+            }
+            
+            .calidad-grid-premium, .compromiso-values {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+        
+
+        .whatsapp-float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 30px;
+        right: 30px;
+        background-color: #25d366;
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        font-size: 35px; /* Tamaño del icono */
+        box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+    .whatsapp-float:hover {
+        transform: scale(1.1);
+        background-color: #128c7e;
+    }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="./Img/Logotipo.png" alt="TOCI Logo" style="height: 60px; display: block;">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="./Index.html">Inicio</a></li>
+                    <li><a href="./Cátalogo.html">Catálogo</a></li>
+                    <li><a href="./Contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-premium" id="inicio">
+        <div class="hero-media">
+            <img src="./Img/banner" alt="Calzado artesanal premium">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-eyebrow">Desde León, Guanajuato 
+                <br>Cuidando tus pasos desde el 2000</span>
+            <h1 class="hero-title">Calzado pensado <br>para cuidar tus pies</h1>
+            <p class="hero-subtitle">
+                En Calzado TOCI fabricamos calzado de confort e industrial, enfocado en la comodidad, la calidad y el bienestar de quienes lo usan todos los días.
+            </p>
+            <div class="hero-actions">
+                <a href="./Cátalogo.html" class="hero-cta">Conoce nuestro calzado</a>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Timeline Section -->
+    <section class="premium-chronicle" id="timeline">
+        <div class="chronicle-line-track">
+            <div class="chronicle-progress-bar" id="progress-bar" style="height: 79.0926%;"></div>
+        </div>
+        <div class="chronicle-wrapper">
+            <div class="chronicle-intro">
+                <h2 class="editorial-title">Nuestra <br><span class="accent-text">Historia</span></span></h2>
+            </div>
+            <div class="chronicle-node" data-node="1" style="opacity: 1; transform: translateY(0px); transition: 1.2s cubic-bezier(0.2, 1, 0.3, 1);">
+                <div class="node-content">
+                    <div class="node-header">
+                        <span class="node-year">2000</span>
+                        <h3 class="node-title">El inicio de un sueño</h3>
+                    </div>
+                    <div class="node-body">
+                        <p>Calzado TOCI comenzó sus actividades en el año 2000, en el corazón del Barrio Arriba, en la ciudad de León, Guanajuato. Inició como un pequeño taller, con una visión clara: crear una empresa sólida dedicada al cuidado de los pies.</p>
+                    </div>
+                </div>
+                <div class="node-visual">
+                    <div class="visual-frame">
+                        <img src="./Img/3.png" style="width: 100%;
+    height: 10%;" alt="Herencia TOCI">
+                    </div>
+                </div>
+            </div>
+            <div class="chronicle-node reversed" data-node="2" style="opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.2, 1, 0.3, 1);">
+                <div class="node-content">
+                    <div class="node-header">
+                        <span class="node-year">2000 – 2005</span>
+                        <h3 class="node-title">El primer gran paso</h3>
+                    </div>
+                    <div class="node-body">
+                        <p>Nuestro primer pedido fue de 60 pares de calzado de vestir para caballero, destinados a un cliente en la Ciudad de México. Este logro marcó el inicio de nuevas oportunidades y confirmó que íbamos por el camino correcto.</p>
+                    </div>
+                </div>
+                <div class="node-visual">
+                    <div class="visual-frame">
+                        <img src="./Img/4.png" style="width: 100%;
+    height: 10%;" alt="Materiales Premium">
+                    </div>
+                </div>
+            </div>
+            <div class="chronicle-node" data-node="3" style="opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.2, 1, 0.3, 1);">
+                <div class="node-content">
+                    <div class="node-header">
+                        <span class="node-year">Crecimiento continuo</span>
+                        <h3 class="node-title">Evolución y confianza</h3>
+                    </div>
+                    <div class="node-body">
+                        <p>Con el paso del tiempo llegaron más clientes mayoristas y la incursión en catálogos de firmas importantes como Price Shoes y Impuls, ampliando nuestras líneas hacia el calzado casual y el calzado de seguridad.</p>
+                    </div>
+                </div>
+                <div class="node-visual">
+                    <div class="visual-frame">
+                        <img src="./Img/5.png" style="width: 100%;
+    height: 10%;" alt="Futuro TOCI">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calidad Section -->
+    <section class="calidad-section" id="calidad">
+        <div class="calidad-container">
+            <div class="calidad-header">
+                <p>Compromiso con la calidad</p>
+                <h2>Calidad y comodidad <br>en cada par</h2>
+            </div>
+            <div class="calidad-grid-premium">
+                <article class="quality-item item-materiales">
+                    <div class="quality-bg-reveal" style="background-image: url('./Img/Calidad.png');"></div>
+                    <span class="q-number">01</span>
+                    <div class="quality-content">
+                        <h3>Materiales confiables</h3>
+                        <p>Utilizamos materia prima seleccionada y procesos cuidados para ofrecer un calzado cómodo, resistente y adecuado para el uso diario.</p>
+                    </div>
+                </article>
+                <article class="quality-item item-detalle">
+                    <div class="quality-bg-reveal" style="background-image: url('./Img/Mano\ de\ obra\ 2.png');"></div>
+                    <span class="q-number">02</span>
+                    <div class="quality-content">
+                        <h3>Mano de obra especializada</h3>
+                        <p>Nuestro equipo cuenta con experiencia en la fabricación de calzado, cuidando cada detalle para asegurar un producto bien terminado y funcional.</p>
+                    </div>
+                </article>
+                <article class="quality-item item-durabilidad">
+                    <div class="quality-bg-reveal" style="background-image: url('./Img/Cuadros\ 3.png');"></div>
+                    <span class="q-number">03</span>
+                    <div class="quality-content">
+                        <h3>Hechos para acompañarte</h3>
+                        <p>Diseñamos calzado pensado para durar y para responder a las necesidades reales de quienes pasan largas jornadas de pie.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Split -->
+    <section class="hero-split">
+        <div class="split-slider">
+            <div class="slide active" style="background-image: url('./Img/banner')"></div>
+            <div class="slide" style="background-image: url('./Img/banner')"></div>
+            <div class="slide" style="background-image: url('./Img/banner')"></div>
+        </div>
+        <div class="split-content">
+            <div class="content-box">
+                <span class="eyebrow">Pensado para el uso real</span>
+                <h1>Calzado de confort <br>y calzado industrial <br><span class="accent-text">hecho en León</span></span></h1>
+                <p>Descubre líneas diseñadas para cuidar tus pies, sin sacrificar funcionalidad ni resistencia.</p>
+                <a href="#" class="btn-mexa">Ver catálogo</a>
+            </div>
+        </div>
+        <div class="split-fixed">
+            <div class="fixed-img" style="background-image: url('./Img/banner')"></div>
+            <div class="overlay-texture"></div>
+        </div>
+    </section>
+
+    <!-- Compromiso Section -->
+    <section class="compromiso-inmersivo" id="compromiso">
+        <div class="bg-scroll-text">EXCELENCIA</div>
+        <div class="compromiso-container">
+            <div class="compromiso-visual">
+                <div class="main-image-wrapper">
+                    <img src="./Img/Mano de obra.png" alt="Artesanía Ética" class="reveal-img">
+                </div>
+                <div class="sello-autenticidad" style="transform: translateY(-321.36px);">
+                    <svg viewBox="0 0 100 100">
+                        <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"></path>
+                        <text>
+                            <textPath xlink:href="#circlePath">
+                                CALZADO TOCI -•-DESDE 2000 -•-
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+            </div>
+            <div class="compromiso-text" style="    margin-right: 5%;
+    margin-left: 5%;">
+                <h2 class="section-title">Nuestro compromiso <br>es con las personas</span></h2>
+                <div class="divider-minimal"></div>
+                <p class="main-desc">
+                    En Calzado TOCI anteponemos el valor de la persona sobre cualquier precio, escuchando a nuestros clientes y ofreciendo soluciones reales para el cuidado de sus pies.
+                </p>
+                <div class="interactive-values">
+                    <div class="value-item" style="opacity: 1; transform: translateY(0px);">
+                        <span class="value-name">Entusiasmo</span>
+                        <span class="value-detail">Afrontamos cada reto con pasión.</span>
+                    </div>
+                    <div class="value-item" style="opacity: 1; transform: translateY(0px);">
+                        <span class="value-name">Empatía con el cliente</span>
+                        <span class="value-detail">Trato amable y comunicación continua.</span>
+                    </div>
+                    <div class="value-item" style="opacity: 1; transform: translateY(0px);">
+                        <span class="value-name">Calidad y compromiso</span>
+                        <span class="value-detail">Asumimos cada pedido con responsabilidad.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/524778241200?text=Hola,%20necesito%20más%20información%20sobre%20su%20calzado" class="whatsapp-float" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+    <!-- Footer -->
+    <footer class="footer-premium">
+        <div class="footer-inner">
+            <div class="footer-branding">
+                <h2 class="branding-title">TOCI</h2>
+                <p class="branding-sub">Lo mejor para tus pies.</p>
+            </div>
+            <nav class="footer-nav-minimal">
+                <div class="nav-links-row">
+                    <a href="#" class="nav-item">Proceso</a>
+                    <span class="nav-dot"></span>
+                    <a href="./Cátalogo.html" class="nav-item">Colecciones</a>
+                    <span class="nav-dot"></span>
+                    <a href="#compromiso" class="nav-item">Compromiso</a>
+                    <span class="nav-dot"></span>
+                    <a href="./Contacto.html" class="nav-item">Contacto</a>
+                </div>
+            </nav>
+            <div class="footer-bottom-meta">
+                <div class="meta-left">
+                    <a href="mailto:hola@toci.mx" class="email-link">tociventas@gmail.com</a>
+                </div>
+                <div class="meta-right">
+                    <div class="social-minimal">
+                        <a href="#">IG</a>
+                        <a href="#">FB</a>
+                        <a href="#">PN</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <span>&copy; © 2026 Calzado TOCI · León, Guanajuato</span>
+                <div class="legal-dots">
+                    <a href="#">Privacidad</a>
+                    <a href="#">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animación inicial hero
+        window.addEventListener('DOMContentLoaded', () => {
+            const elements = [
+                document.querySelector('.hero-eyebrow'),
+                document.querySelector('.hero-title'),
+                document.querySelector('.hero-subtitle'),
+                document.querySelector('.hero-actions')
+            ];
+
+            elements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                    el.style.transition = 'all 0.9s cubic-bezier(.4,0,.2,1)';
+                }, index * 220);
+            });
+        });
+
+        // Scroll-Driven Storytelling
+        document.addEventListener('scroll', () => {
+            const track = document.querySelector('.chronicle-line-track');
+            const progress = document.getElementById('progress-bar');
+            const nodes = document.querySelectorAll('.chronicle-node');
+            
+            if (track && progress) {
+                const scrollPercent = (window.scrollY - track.offsetTop + (window.innerHeight / 2)) / track.offsetHeight * 100;
+                progress.style.height = `${Math.min(Math.max(scrollPercent, 0), 100)}%`;
+            }
+
+            nodes.forEach(node => {
+                const rect = node.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.7) {
+                    node.style.opacity = "1";
+                    node.style.transform = "translateY(0)";
+                    node.style.transition = "all 1.2s cubic-bezier(0.2, 1, 0.3, 1)";
+                }
+            });
+        });
+
+        // Inicialización de opacidad timeline
+        document.querySelectorAll('.chronicle-node').forEach(n => n.style.opacity = "0");
+
+        // Animación calidad items
+        document.addEventListener('DOMContentLoaded', () => {
+            const qualityItems = document.querySelectorAll('.quality-item');
+            qualityItems.forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(40px)';
+                item.style.transition = 'all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)';
+            });
+
+            const observerOptions = { threshold: 0.2 };
+            const qualityObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, index * 200);
+                    }
+                });
+            }, observerOptions);
+
+            qualityItems.forEach(item => qualityObserver.observe(item));
+        });
+
+        // Slider hero-split
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function nextSlide() {
+                if (slides.length > 0) {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }
+            }
+
+            if (slides.length > 0) {
+                setInterval(nextSlide, 4000);
+            }
+        });
+
+        // Scroll animations compromiso
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            const section = document.querySelector('.compromiso-inmersivo');
+            const bgText = document.querySelector('.bg-scroll-text');
+            const img = document.querySelector('.reveal-img');
+            
+            if (section && bgText && img) {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scroll > sectionTop - window.innerHeight && scroll < sectionTop + sectionHeight) {
+                    const moveText = (scroll - sectionTop) * 0.2;
+                    bgText.style.transform = `translate(calc(-50% + ${moveText}px), -50%)`;
+                    
+                    const zoom = 1 + (scroll - sectionTop) * 0.0002;
+                    img.style.transform = `scale(${zoom})`;
+                }
+            }
+        });
+
+        // Animación value items
+        const valueItems = document.querySelectorAll('.value-item');
+        const valueObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }, index * 200);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        valueItems.forEach(item => {
+            item.style.opacity = "0";
+            item.style.transform = "translateY(30px)";
+            valueObserver.observe(item);
+        });
+
+        // Animación sello y título
+        window.addEventListener('scroll', () => {
+            const scroll = window.pageYOffset;
+            const sello = document.querySelector('.sello-autenticidad');
+            const title = document.querySelector('.section-title');
+            
+            if(sello) {
+                sello.style.transform = `translateY(${scroll * -0.05}px)`;
+            }
+
+            if (title) {
+                const rect = title.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    title.style.opacity = "1";
+                    title.style.transform = "translateX(0)";
+                }
+            }
+        });
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.startsWith('#')) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // Animación footer
+        document.addEventListener('DOMContentLoaded', () => {
+            const footer = document.querySelector('.footer-premium');
+            const brand = document.querySelector('.branding-title');
+
+            if (footer && brand) {
+                const revealFooter = (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            brand.animate([
+                                { transform: 'translateY(100px)', opacity: 0 },
+                                { transform: 'translateY(0)', opacity: 1 }
+                            ], {
+                                duration: 1200,
+                                easing: 'cubic-bezier(0.16, 1, 0.3, 1)',
+                                fill: 'forwards'
+                            });
+                        }
+                    });
+                };
+
+                const observer = new IntersectionObserver(revealFooter, { threshold: 0.1 });
+                observer.observe(footer);
+            }
+        });
+    </script>
+</body>
+</html>
