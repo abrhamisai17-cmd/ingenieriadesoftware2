@@ -40,14 +40,6 @@
             top: 0;
             z-index: 100;
         }
-                .header2 {
-            background: var(--white);
-            box-shadow: var(--shadow);
-            z-index: 100;
-                text-align: center;
-    margin-bottom: 80px;
-        position: unset;
-        }
 
         .nav-container {
             max-width: 1300px;
@@ -881,157 +873,6 @@
     .product-container { grid-template-columns: 1fr; }
     .product-title { font-size: 2rem; }
 }
-
-
-:root {
-    --primary: #202f79;
-    --accent: #c0b9b3;
-    --sand: #c2bbb5;
-    --white: #ffffff;
-    --dark-grey: #333;
-}
-
-.contact-premium {
-    padding: 4% 5% 0%;
-    background-color: var(--white);
-    font-family: 'Inter', sans-serif;
-}
-
-.contact-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* Cabecera */
-.contact-header {
-    text-align: center;
-    margin-bottom: 80px;
-}
-
-.eyebrow {
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-weight: 700;
-    font-size: 0.85rem;
-}
-
-.display-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 5rem);
-    color: var(--primary);
-    line-height: 1;
-    margin: 20px 0;
-}
-
-.accent-text {
-    font-style: italic;
-    color: var(--sand);
-}
-
-.sub-lead {
-    font-size: 1.2rem;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* Rejilla de Tarjetas */
-.contact-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-bottom: 80px;
-}
-
-.contact-card {
-    background: #f8f8f8;
-    padding: 60px 40px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border: 1px solid #f0f0f0;
-}
-
-.contact-card.dark {
-    background: var(--primary);
-    color: white;
-}
-
-.contact-card.dark p, .contact-card.dark h3 {
-    color: white;
-}
-
-.contact-card i {
-    font-size: 2.5rem;
-    color: var(--primary);
-    margin-bottom: 30px;
-}
-
-.contact-card.dark i {
-    color: var(--accent);
-}
-
-.contact-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    margin-bottom: 15px;
-    color: var(--primary);
-}
-
-.contact-card p {
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-.card-action {
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-}
-
-/* Hover Effects */
-.contact-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    border-color: var(--accent);
-}
-
-/* Footer Ubicación */
-.location-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 60px;
-    border-top: 1px solid #eee;
-}
-
-.location-text h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: var(--primary);
-}
-
-.location-badge {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    color: var(--accent);
-    font-weight: 600;
-}
-
-.location-badge i { font-size: 2rem; }
-
-/* Responsive */
-@media (max-width: 1100px) {
-    .contact-grid { grid-template-columns: 1fr; }
-    .location-footer { flex-direction: column; text-align: center; gap: 30px; }
-}
     </style>
 </head>
 <body>
@@ -1051,54 +892,73 @@
         </div>
     </header>
 
-
-    
-
-<section class="contact-premium">
-    <div class="contact-wrapper">
+    <section class="product-page">
+    <div class="product-container">
         
-        <header class="header2">
-            <span class="eyebrow">Atención Personalizada</span>
-            <h1 class="display-title">Conectemos <br><span class="accent-text">contigo.</span></h1>
-            <p class="sub-lead">Sin formularios. Sin esperas. Elige el canal de tu preferencia para hablar directamente con nosotros en León, Gto.</p>
-        </header>
-
-        <div class="contact-grid">
-            
-            <a href="https://wa.me/524778241200?text=Hola,%20solicito%20atención%20para%20una%20compra" class="contact-card">
-                <div class="card-content">
-                    <i class="fab fa-whatsapp"></i>
-                    <h3>Ventas & Pedidos</h3>
-                    <p>Atención inmediata para compras individuales y seguimiento de envíos.</p>
-                    <span class="card-action">Chatea con nosotros →</span>
-                </div>
-            </a>
-
-            <a href="mailto:tociventas@gmail.com?subject=Consulta%20sobre%20Maquila%20o%20Mayoreo" class="contact-card dark">
-                <div class="card-content">
-                    <i class="fas fa-industry"></i>
-                    <h3>Maquila & Mayoreo</h3>
-                    <p>Cotizaciones para grandes firmas y proyectos de fabricación especial.</p>
-                    <span class="card-action">Enviar propuesta vía Email →</span>
-                </div>
-            </a>
-
-            <a href="tel:4778241200" class="contact-card">
-                <div class="card-content">
-                    <i class="fas fa-phone-alt"></i>
-                    <h3>Atención Telefónica</h3>
-                    <p>Llámanos directamente a nuestra fábrica en León.</p>
-                    <span class="card-action">Llamar ahora →</span>
-                </div>
-            </a>
-
+        <div class="product-gallery">
+            <div class="main-image-container" id="zoom-container">
+                <img src="./Img/6.png" id="main-product-img" alt="Calzado TOCI Premium">
+                <div class="zoom-lens"></div>
+            </div>
+            <div class="thumbnails">
+                <img src="./Img/66.png" class="thumb active" onclick="changeImage(this.src, this)" alt="Vista Lateral">
+                <img src="./Img/67.png" class="thumb" onclick="changeImage(this.src, this)" alt="Vista Superior">
+                <img src="./Img/68.png" class="thumb" onclick="changeImage(this.src, this)" alt="Detalle Suela">
+                <img src="./Img/69.png" class="thumb" onclick="changeImage(this.src, this)" alt="Uso Lifestyle">
+                <img src="./Img/70.png" class="thumb" onclick="changeImage(this.src, this)" alt="Uso Lifestyle">
+            </div>
         </div>
 
-        <div class="location-footer">
+        <div class="product-details">
+            <span class="eyebrow">Colección Confort 2026</span>
+            <h1 class="product-title">Modelo 2000 Pro - Oxford</h1>
+            <p class="product-price">$1,850.00 MXN</p>
             
+            <p class="product-description">
+                Diseñado para el profesional que no sacrifica estilo por comodidad. Piel de flor entera tratada artesanalmente en León, Guanajuato.
+            </p>
+
+            <div class="product-options">
+                <label>Seleccionar Talla (MX)</label>
+                <div class="size-selector">
+                    <button class="size-btn">25</button>
+                    <button class="size-btn">26</button>
+                    <button class="size-btn">27</button>
+                    <button class="size-btn">28</button>
+                    <button class="size-btn">29</button>
+                </div>
+            </div>
+
+            <button class="btn-primary-buy">Enviar mensaje</button>
+
+            <div class="info-accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        Especificaciones Técnicas <span>+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Material:</strong> Piel Vacuna Premium.</li>
+                            <li><strong>Suela:</strong> Inyección directa al corte (Antiderrapante).</li>
+                            <li><strong>Plantilla:</strong> Memoria de forma (Memory Foam).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        Garantía  <span>+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Garantía de 30 días por defectos de fabricación.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
+    
+
+
 
 
 
